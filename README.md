@@ -1,2 +1,2 @@
 # VstTest_1
-VST Testing
+This repository includes tests about threading and VSTs
