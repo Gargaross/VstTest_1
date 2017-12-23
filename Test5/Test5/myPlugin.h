@@ -1,8 +1,8 @@
 #pragma once
 
-#include "lib/vstaudioeffect.h"
+//#include "lib/vstaudioeffect.h"
 
-class MyPlugin : public AudioEffect
-{
-
-};
+//class MyPlugin : public AudioEffect
+//{
+//
+//};
