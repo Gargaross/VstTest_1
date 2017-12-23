@@ -14,20 +14,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="VstImportSource.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="header.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="VstImportSource.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\vst3sdk\base\source\baseiids.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
@@ -103,5 +89,34 @@
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\pluginfactoryvst3.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
+    <ClCompile Include="adelaycontroller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adelayprocessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="exampletest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="factory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="adelaycontroller.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adelayids.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adelayprocessor.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="exampletest.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="version.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
