@@ -40,6 +40,15 @@ void ChangeValues()
 }
 
 
+struct A {
+	int a;
+};
+
+struct B {
+	string a;
+};
+
+
 int main()
 {
 	std::thread first(PrintValues);
@@ -49,6 +58,9 @@ int main()
 	second.join();
 
 	print("Joined the threads");
+
+	cout << std::is_trivially_copyable<A>::value << endl;
+	cout << std::is_trivially_copyable<B*> ::value << endl;
 
 	return 0;
 }
