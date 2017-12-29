@@ -5,27 +5,19 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Resource Files\VstSource">
-      <UniqueIdentifier>{1a6eac02-9acc-4930-bba8-f3443f9d802f}</UniqueIdentifier>
+      <UniqueIdentifier>{5cb23770-16f1-4d1f-88ad-68d21070137e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="adelaycontroller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="adelayprocessor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="exampletest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="factory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\vst3sdk\base\source\baseiids.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
@@ -92,31 +84,106 @@
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstcomponentbase.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vsteditcontroller.cpp">
-      <Filter>Resource Files\VstSource</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstinitiids.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstparameters.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
+    <ClCompile Include="source\again.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\againcontroller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\againentry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\againsidechain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_win32.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_uidescription_win32.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3editor.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\plugguieditor.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3groupcontroller.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3padcontroller.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstguieditor.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstsinglecomponenteffect.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="adelaycontroller.h">
+    <None Include="again.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="resource\again.uidesc">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\again.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="adelayids.h">
+    <ClInclude Include="source\againcids.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="adelayprocessor.h">
+    <ClInclude Include="source\againcontroller.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="exampletest.h">
+    <ClInclude Include="source\againparamids.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="version.h">
+    <ClInclude Include="source\againprocess.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\againsidechain.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\againuimessagecontroller.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\version.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource\again.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resource\background.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\slider_background.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\slider_handle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\slider_handle_2.0x.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\vu_off.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resource\vu_on.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
