@@ -72,9 +72,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)_dbg</TargetName>
+    <TargetExt>.vst3</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)_dbg_x64</TargetName>
+    <TargetExt>.vst3</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -94,12 +98,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;THEBYPASSER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ModuleDefinitionFile>deffile.def</ModuleDefinitionFile>
     </Link>
+    <PostBuildEvent>
+      <Message>Copy .vst3 to VST3 folder</Message>
+      <Command>copy "$(SolutionDir)\$(Configuration)\$(TargetFileName)" "C:\Program Files (x86)\Common Files\VST3"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -110,12 +119,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;THEBYPASSER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ModuleDefinitionFile>deffile.def</ModuleDefinitionFile>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)$(Platform)\$(Configuration)\$(TargetFileName)" "C:\Program Files\Common Files\VST3"</Command>
+      <Message>Copy .vst3 to VST3 folder</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -138,10 +152,10 @@
       <ModuleDefinitionFile>deffile.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)\$(Configuration)\$(TargetFileName)" "C:\Program Files\Common Files\VST3"</Command>
+      <Command>copy "$(SolutionDir)\$(Configuration)\$(TargetFileName)" "C:\Program Files (x86)\Common Files\VST3"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>copy .vst3 to VST3 folder</Message>
+      <Message>Copy .vst3 to VST3 folder</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
