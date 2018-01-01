@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\VstSource">
+      <UniqueIdentifier>{3e24580c-d8e2-4400-8c3c-2b3486d56297}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TheBypasser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fdebug.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fdynlib.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fobject.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fstreamer.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fstring.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\timer.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\updatehandler.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\baseiids.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fbuffer.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\thread\source\fcondition.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\thread\source\flock.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\conststringtable.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\coreiids.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\funknown.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\ustring.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst3stdsdk.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\dllmain.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\pluginfactoryvst3.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\common\pluginview.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstinitiids.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="BypassProcessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TheBypasser.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fbuffer.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fcleanup.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fcommandline.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fdebug.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fdynlib.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fobject.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fstdmethods.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fstreamer.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fstring.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\hexbinary.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\timer.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\updatehandler.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\classfactoryhelpers.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\thread\include\fcondition.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\thread\include\flock.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\conststringtable.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\doc.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\falignpop.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\falignpush.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\fplatform.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\fstrdefs.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ftypes.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\funknown.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\futils.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\fvariant.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\geoconstants.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ibstream.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\icloneable.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ierrorcontext.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ipersistent.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ipluginbase.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\istringresult.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\iupdatehandler.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\keycodes.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\pluginbasefwd.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\smartpointer.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ucolorspec.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ustring.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\main\pluginfactoryvst3.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\common\pluginview.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="BypassProcessor.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="deffile.def">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
