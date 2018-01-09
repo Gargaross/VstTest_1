@@ -84,6 +84,9 @@
     <ClCompile Include="BypassProcessor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BypassController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TheBypasser.h">
@@ -210,6 +213,9 @@
       <Filter>Resource Files\VstSource</Filter>
     </ClInclude>
     <ClInclude Include="BypassProcessor.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BypassController.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

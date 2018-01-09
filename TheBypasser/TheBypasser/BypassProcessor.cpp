@@ -1,11 +1,12 @@
 
 #include "BypassProcessor.h"
+#include "TheBypasser.h"
 
 namespace Steinberg {
 namespace Vst {
 	BypassProcessor::BypassProcessor()
 	{
-		//setControllerClass(ADelayControllerUID);
+		setControllerClass(BypassControllerUID);
 	}
 
 
@@ -32,7 +33,6 @@ namespace Vst {
 
 	tresult PLUGIN_API BypassProcessor::setActive(TBool state)
 	{
-		/*
 		SpeakerArrangement arr;
 		if (getBusArrangement(kOutput, 0, arr) != kResultTrue)
 			return kResultFalse;
@@ -42,39 +42,23 @@ namespace Vst {
 
 		if (state)
 		{
-			mBuffer = (float**)std::malloc(numChannels * sizeof(float*));
-
-			size_t size = (size_t)(processSetup.sampleRate * sizeof(float) + 0.5);
-			for (int32 channel = 0; channel < numChannels; channel++)
-			{
-				mBuffer[channel] = (float*)std::malloc(size);	// 1 second delay max
-				memset(mBuffer[channel], 0, size);
-			}
-			mBufferPos = 0;
+			// allocate memory
 		}
 		else
 		{
-			if (mBuffer)
-			{
-				for (int32 channel = 0; channel < numChannels; channel++)
-				{
-					std::free(mBuffer[channel]);
-				}
-				std::free(mBuffer);
-				mBuffer = 0;
-			}
+			// free memory
 		}
 		return AudioEffect::setActive(state);
-		*/
-		return kResultTrue;
 	}
 
 
 	tresult PLUGIN_API BypassProcessor::process(ProcessData& data)
 	{
-		/*
 		if (data.inputParameterChanges)
 		{
+			// apply parameter changes
+
+			/*
 			int32 numParamsChanged = data.inputParameterChanges->getParameterCount();
 			for (int32 index = 0; index < numParamsChanged; index++)
 			{
@@ -99,10 +83,26 @@ namespace Vst {
 					}
 				}
 			}
+			*/
 		}
 
 		if (data.numSamples > 0)
 		{
+			// process samples
+
+			SpeakerArrangement arr;
+			getBusArrangement(kOutput, 0, arr);
+			int32 numChannels = SpeakerArr::getChannelCount(arr);
+
+			for (int32 channel = 0; channel < numChannels; channel++) {
+				float* outputChannel = data.outputs[0].channelBuffers32[channel];
+
+				for (int32 sample = 0; sample < data.numSamples; sample++) {
+					outputChannel[sample] = 0;
+				}
+			}
+
+			/*
 			SpeakerArrangement arr;
 			getBusArrangement(kOutput, 0, arr);
 			int32 numChannels = SpeakerArr::getChannelCount(arr);
@@ -130,9 +130,8 @@ namespace Vst {
 			mBufferPos += data.numSamples;
 			while (delayInSamples && mBufferPos >= delayInSamples)
 				mBufferPos -= delayInSamples;
+			*/
 		}
-		return kResultTrue;
-		*/
 		return kResultTrue;
 	}
 
