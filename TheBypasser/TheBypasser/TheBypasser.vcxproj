@@ -207,6 +207,7 @@
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst3stdsdk.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstinitiids.cpp" />
     <ClCompile Include="BypassController.cpp" />
+    <ClCompile Include="BypasserPlugView.cpp" />
     <ClCompile Include="BypassProcessor.cpp" />
     <ClCompile Include="TheBypasser.cpp" />
   </ItemGroup>
@@ -252,6 +253,7 @@
     <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\common\pluginview.h" />
     <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\main\pluginfactoryvst3.h" />
     <ClInclude Include="BypassController.h" />
+    <ClInclude Include="BypasserPlugView.h" />
     <ClInclude Include="BypassProcessor.h" />
     <ClInclude Include="TheBypasser.h" />
   </ItemGroup>
