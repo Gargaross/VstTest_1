@@ -1,4 +1,4 @@
-#include "BypasserPlugView.h"
+#include "BypasserCPlugView.h"
 
 namespace Steinberg {
 
@@ -7,7 +7,21 @@ namespace Steinberg {
 
 	}
 
-	
+	/** Calls when this view will be attached to its parent view. */
+	/*
+	void PLUGIN_API attachedToParent()
+	{
+
+	}
+	*/
+
+	/** Calls when this view will be removed from its parent view. */
+	/*
+	void PLUGIN_API removedFromParent()
+	{
+
+	}
+	*/
 
 	/*
 	tresult PLUGIN_API isPlatformTypeSupported(FIDString type)

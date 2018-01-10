@@ -9,6 +9,11 @@ namespace Steinberg {
 	public:
 		BypasserPlugView();
 
+		/** Calls when this view will be attached to its parent view. */
+		//void PLUGIN_API attachedToParent() SMTG_OVERRIDE {};
+
+		/** Calls when this view will be removed from its parent view. */
+		//void PLUGIN_API removedFromParent() SMTG_OVERRIDE;
 		
 		//tresult PLUGIN_API isPlatformTypeSupported(FIDString type);
 

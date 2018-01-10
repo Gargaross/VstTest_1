@@ -1,5 +1,6 @@
 #include "BypassController.h"
-#include "BypasserPlugView.h"
+#include "BypasserCPlugView.h"
+#include "BypasserIPlugView.h"
 #include "pluginterfaces/base/ustring.h"
 #include "pluginterfaces/base/ibstream.h"
 
@@ -69,8 +70,7 @@ namespace Vst {
 
 		IPlugView* PLUGIN_API BypassController::createView(FIDString str)
 		{
-			// create the gui?
-			return new Steinberg::BypasserPlugView();
+			return new Steinberg::BypasserIPlugView();
 		}
 		
 

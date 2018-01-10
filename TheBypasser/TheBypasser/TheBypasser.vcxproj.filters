@@ -87,7 +87,10 @@
     <ClCompile Include="BypassController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BypasserPlugView.cpp">
+    <ClCompile Include="BypasserCPlugView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BypasserIPlugView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -221,7 +224,10 @@
     <ClInclude Include="BypassController.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="BypasserPlugView.h">
+    <ClInclude Include="BypasserCPlugView.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BypasserIPlugView.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
