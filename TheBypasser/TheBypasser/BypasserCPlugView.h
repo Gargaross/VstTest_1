@@ -10,12 +10,12 @@ namespace Steinberg {
 		BypasserPlugView();
 
 		/** Calls when this view will be attached to its parent view. */
-		//void PLUGIN_API attachedToParent() SMTG_OVERRIDE {};
+		void attachedToParent() SMTG_OVERRIDE;
 
 		/** Calls when this view will be removed from its parent view. */
-		//void PLUGIN_API removedFromParent() SMTG_OVERRIDE;
+		void removedFromParent() SMTG_OVERRIDE;
 		
-		//tresult PLUGIN_API isPlatformTypeSupported(FIDString type);
+		tresult PLUGIN_API isPlatformTypeSupported(FIDString type) SMTG_OVERRIDE;
 
 		/** The parent window of the view has been created, the (platform) representation of the view
 		should now be created as well.

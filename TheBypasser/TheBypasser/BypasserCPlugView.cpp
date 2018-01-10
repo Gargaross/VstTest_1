@@ -8,27 +8,30 @@ namespace Steinberg {
 	}
 
 	/** Calls when this view will be attached to its parent view. */
-	/*
-	void PLUGIN_API attachedToParent()
+	
+	void BypasserPlugView::attachedToParent()
 	{
-
-	}
-	*/
-
-	/** Calls when this view will be removed from its parent view. */
-	/*
-	void PLUGIN_API removedFromParent()
-	{
-
-	}
-	*/
-
-	/*
-	tresult PLUGIN_API isPlatformTypeSupported(FIDString type)
-	{
-		return 0;
+		
 	}
 	
+
+	/** Calls when this view will be removed from its parent view. */
+	void BypasserPlugView::removedFromParent()
+	{
+
+	}
+	
+
+	
+	tresult PLUGIN_API BypasserPlugView::isPlatformTypeSupported(FIDString type)
+	{
+		if (strcmp(type, kPlatformTypeHWND) == 0)
+			return kResultTrue;
+
+		return kNotImplemented;
+	}
+	
+	/*
 	tresult PLUGIN_API attached(void* parent, FIDString type)
 	{
 		return 0;

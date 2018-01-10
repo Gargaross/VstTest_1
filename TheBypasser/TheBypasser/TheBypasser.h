@@ -1,6 +1,8 @@
 #pragma once
 
 #include "pluginterfaces/base/fplatform.h"
+#include <string>
+#include <Windows.h>
 
 
 namespace Steinberg {
@@ -41,3 +43,5 @@ static const FUID BypassControllerUID(0x1BEB320C, 0xF3C911E7, 0x83E00191, 0x7105
 #endif
 
 #define NAME_STR "The Bypasser " PLATFORM_STR " " CONFIG_STR
+
+void DbgOut(std::string str);
