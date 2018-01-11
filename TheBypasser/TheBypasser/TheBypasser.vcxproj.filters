@@ -96,6 +96,18 @@
     <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_win32.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstguieditor.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="BypassEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3editor.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_uidescription_win32.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TheBypasser.h">
@@ -233,10 +245,24 @@
     <ClInclude Include="BypasserIPlugView.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\vst\vstguieditor.h">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClInclude>
+    <ClInclude Include="BypassEditor.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="deffile.def">
       <Filter>Source Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TheBypasser.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

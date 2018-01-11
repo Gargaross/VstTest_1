@@ -117,9 +117,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;THEBYPASSER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;THEBYPASSER_EXPORTS;_WINDOWS;_USRDLL;VSTGUI_LIVE_EDITING=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\..\vst3sdk\vstgui4;..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -205,9 +206,13 @@
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\dllmain.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\pluginfactoryvst3.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst3stdsdk.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstguieditor.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstinitiids.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3editor.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_uidescription_win32.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_win32.cpp" />
     <ClCompile Include="BypassController.cpp" />
+    <ClCompile Include="BypassEditor.cpp" />
     <ClCompile Include="BypasserCPlugView.cpp" />
     <ClCompile Include="BypasserIPlugView.cpp" />
     <ClCompile Include="BypassProcessor.cpp" />
@@ -254,14 +259,20 @@
     <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ustring.h" />
     <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\common\pluginview.h" />
     <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\main\pluginfactoryvst3.h" />
+    <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\vst\vstguieditor.h" />
     <ClInclude Include="BypassController.h" />
+    <ClInclude Include="BypassEditor.h" />
     <ClInclude Include="BypasserCPlugView.h" />
     <ClInclude Include="BypasserIPlugView.h" />
     <ClInclude Include="BypassProcessor.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="TheBypasser.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="deffile.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TheBypasser.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

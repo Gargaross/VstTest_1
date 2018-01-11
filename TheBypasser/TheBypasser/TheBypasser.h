@@ -2,7 +2,7 @@
 
 #include "pluginterfaces/base/fplatform.h"
 #include <string>
-#include <Windows.h>
+//#include <Windows.h>
 
 
 namespace Steinberg {

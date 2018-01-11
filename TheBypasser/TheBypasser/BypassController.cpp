@@ -1,9 +1,11 @@
 #include "BypassController.h"
 #include "BypasserCPlugView.h"
 #include "BypasserIPlugView.h"
+#include "BypassEditor.h"
 #include "TheBypasser.h"
 #include "pluginterfaces/base/ustring.h"
 #include "pluginterfaces/base/ibstream.h"
+#include "vstgui\plugin-bindings\vst3editor.h"
 
 namespace Steinberg {
 namespace Vst {
@@ -71,7 +73,16 @@ namespace Vst {
 
 		IPlugView* PLUGIN_API BypassController::createView(FIDString str)
 		{
-			return new Steinberg::BypasserPlugView();
+			// someone wants my editor
+			if (str && strcmp(str, "editor") == 0)
+			{
+				//BypassEditor* view = new BypassEditor(this, new ViewRect());
+				
+				VST3Editor* view = new VST3Editor(this, "view", "Bypasser.uidesc");
+				return view;
+			}
+			
+			return 0;
 		}
 		
 
