@@ -119,7 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;THEBYPASSER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\vst3sdk\vstgui4;..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -206,6 +206,7 @@
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\pluginfactoryvst3.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst3stdsdk.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstinitiids.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_win32.cpp" />
     <ClCompile Include="BypassController.cpp" />
     <ClCompile Include="BypasserCPlugView.cpp" />
     <ClCompile Include="BypasserIPlugView.cpp" />
