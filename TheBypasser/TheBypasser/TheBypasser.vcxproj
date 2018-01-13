@@ -168,9 +168,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;THEBYPASSER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;THEBYPASSER_EXPORTS;_WINDOWS;_USRDLL;VSTGUI_LIVE_EDITING=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\vst3sdk\vstgui4;..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -269,6 +269,7 @@
     <ClInclude Include="TheBypasser.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Bypasser.uidesc" />
     <None Include="deffile.def" />
   </ItemGroup>
   <ItemGroup>
