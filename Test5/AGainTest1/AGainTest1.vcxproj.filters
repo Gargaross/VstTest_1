@@ -18,31 +18,43 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\vst3sdk\base\source\baseiids.cpp">
-      <Filter>Resource Files\VstSource</Filter>
+    <ClCompile Include="source\again.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\base\source\fbuffer.cpp">
-      <Filter>Resource Files\VstSource</Filter>
+    <ClCompile Include="source\againcontroller.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\base\source\fdebug.cpp">
-      <Filter>Resource Files\VstSource</Filter>
+    <ClCompile Include="source\againentry.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\base\source\fdynlib.cpp">
-      <Filter>Resource Files\VstSource</Filter>
+    <ClCompile Include="source\againsidechain.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\base\source\fobject.cpp">
-      <Filter>Resource Files\VstSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\base\source\fstreamer.cpp">
-      <Filter>Resource Files\VstSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\base\source\fstring.cpp">
+    <ClCompile Include="..\..\..\vst3sdk\base\source\updatehandler.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\vst3sdk\base\source\timer.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\base\source\updatehandler.cpp">
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fstring.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fstreamer.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fobject.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fdynlib.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fdebug.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fbuffer.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\baseiids.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\vst3sdk\base\thread\source\fcondition.cpp">
@@ -63,6 +75,9 @@
     <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\ustring.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\common\memorystream.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\common\pluginview.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
@@ -72,58 +87,22 @@
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\pluginfactoryvst3.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstaudioeffect.cpp">
-      <Filter>Resource Files\VstSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstbus.cpp">
-      <Filter>Resource Files\VstSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstcomponent.cpp">
-      <Filter>Resource Files\VstSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstcomponentbase.cpp">
-      <Filter>Resource Files\VstSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstinitiids.cpp">
-      <Filter>Resource Files\VstSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstparameters.cpp">
-      <Filter>Resource Files\VstSource</Filter>
-    </ClCompile>
-    <ClCompile Include="source\again.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\againcontroller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\againentry.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\againsidechain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_win32.cpp">
-      <Filter>Resource Files\VstSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_uidescription_win32.cpp">
-      <Filter>Resource Files\VstSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3editor.cpp">
-      <Filter>Resource Files\VstSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\plugguieditor.cpp">
-      <Filter>Resource Files\VstSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3groupcontroller.cpp">
-      <Filter>Resource Files\VstSource</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3padcontroller.cpp">
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst3stdsdk.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstguieditor.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstsinglecomponenteffect.cpp">
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstinitiids.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_uidescription_win32.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_win32.cpp">
+      <Filter>Resource Files\VstSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3editor.cpp">
       <Filter>Resource Files\VstSource</Filter>
     </ClCompile>
   </ItemGroup>

@@ -44,6 +44,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -137,7 +138,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;AGAINTEST1_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;AGAINTEST1_EXPORTS;_WINDOWS;_USRDLL;VSTGUI_LIVE_EDITING=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\..\vst3sdk\vstgui4;..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -147,9 +148,12 @@
       <ModuleDefinitionFile>again.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>copy "$(SolutionDir)$(Platform)\$(Configuration)\$(TargetFileName)" "C:\Program Files\Common Files\VST3"</Command>
+      <Message>Copy .vst3 file to VST3 directory</Message>
     </PostBuildEvent>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -160,7 +164,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;AGAINTEST1_EXPORTS;_WINDOWS;_USRDLL;VSTGUI_LIVE_EDITING=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;AGAINTEST1_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\..\vst3sdk\vstgui4;..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -195,21 +199,14 @@
     <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\coreiids.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\funknown.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\ustring.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\common\memorystream.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\common\pluginview.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\dllmain.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\pluginfactoryvst3.cpp" />
-    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstaudioeffect.cpp" />
-    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstbus.cpp" />
-    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstcomponent.cpp" />
-    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstcomponentbase.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst3stdsdk.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstguieditor.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstinitiids.cpp" />
-    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstparameters.cpp" />
-    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstsinglecomponenteffect.cpp" />
-    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\plugguieditor.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3editor.cpp" />
-    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3groupcontroller.cpp" />
-    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3padcontroller.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_uidescription_win32.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_win32.cpp" />
     <ClCompile Include="source\again.cpp" />
