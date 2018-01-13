@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\VST Source">
+      <UniqueIdentifier>{6750a88e-fd5b-47a5-bbdc-3900a8d22372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\VSTGUI Source">
+      <UniqueIdentifier>{07951a19-5e21-47e8-a190-568e1cb7ed9d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Processor.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Processor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\baseiids.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fbuffer.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fdebug.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fdynlib.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fobject.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fstreamer.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fstring.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\timer.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\updatehandler.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\thread\source\fcondition.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\thread\source\flock.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\conststringtable.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\coreiids.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\funknown.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\ustring.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\common\memorystream.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\common\pluginview.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\dllmain.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\pluginfactoryvst3.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst3stdsdk.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstinitiids.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Factory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstguieditor.cpp">
+      <Filter>Resource Files\VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_uidescription_win32.cpp">
+      <Filter>Resource Files\VSTGUI Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_win32.cpp">
+      <Filter>Resource Files\VSTGUI Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vst3.def">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
