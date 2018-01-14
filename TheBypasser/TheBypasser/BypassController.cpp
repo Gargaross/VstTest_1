@@ -1,6 +1,4 @@
 #include "BypassController.h"
-#include "BypasserCPlugView.h"
-#include "BypasserIPlugView.h"
 #include "BypassEditor.h"
 #include "TheBypasser.h"
 #include "pluginterfaces/base/ustring.h"
@@ -76,9 +74,8 @@ namespace Vst {
 			// someone wants my editor
 			if (str && strcmp(str, "editor") == 0)
 			{
-				//BypassEditor* view = new BypassEditor(this, new ViewRect());
+				BypassEditor* view = new BypassEditor(this);
 				
-				VST3Editor* view = new VST3Editor(this, "view", "Bypasser.uidesc");
 				return view;
 			}
 			

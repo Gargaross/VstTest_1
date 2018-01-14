@@ -9,15 +9,35 @@ namespace Steinberg {
 
 		}
 
-		bool PLUGIN_API BypassEditor::open(void* parent,
-			const PlatformType& platformType = kDefaultNative)
+		bool PLUGIN_API BypassEditor::open(void* parent, const PlatformType& platformType)
 		{
+			CRect frameSize(0, 0, 400, 400);
+			frame = new CFrame(frameSize, this);
+			frame->open(parent);
+
+			frame->setBackgroundColor(kRedCColor);
+
+			CBitmap* background = new CBitmap("background.png");
+			CView* backgroundView = new CView(CRect(0, 0, background->getWidth(), background->getHeight()));
+			backgroundView->setBackground(background);
+
+			CBitmap* buttonImg = new CBitmap("buttonOn.png");
+			CRect r(0, 0, buttonImg->getWidth(), buttonImg->getHeight());
+			r.offset(100, 200);
+			COnOffButton* button = new COnOffButton(r, this, 0, buttonImg);
+
+			background->forget();
+			buttonImg->forget();
+
+			frame->addView(backgroundView);
+			frame->addView(button);
+
 			return true;
 		}
 
 		void PLUGIN_API BypassEditor::close()
 		{
-
+			
 		}
 
 	} // namespace Vst

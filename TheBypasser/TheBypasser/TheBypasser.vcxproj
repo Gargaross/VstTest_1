@@ -213,8 +213,6 @@
     <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_win32.cpp" />
     <ClCompile Include="BypassController.cpp" />
     <ClCompile Include="BypassEditor.cpp" />
-    <ClCompile Include="BypasserCPlugView.cpp" />
-    <ClCompile Include="BypasserIPlugView.cpp" />
     <ClCompile Include="BypassProcessor.cpp" />
     <ClCompile Include="TheBypasser.cpp" />
   </ItemGroup>
@@ -262,18 +260,22 @@
     <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\vst\vstguieditor.h" />
     <ClInclude Include="BypassController.h" />
     <ClInclude Include="BypassEditor.h" />
-    <ClInclude Include="BypasserCPlugView.h" />
-    <ClInclude Include="BypasserIPlugView.h" />
     <ClInclude Include="BypassProcessor.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
+    <ClInclude Include="resource2.h" />
     <ClInclude Include="TheBypasser.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Bypasser.uidesc" />
     <None Include="deffile.def" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="TheBypasser.rc" />
+    <Image Include="resource\background.png" />
+    <Image Include="resource\buttonOff.png" />
+    <Image Include="resource\buttonOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource\TheBypasser.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

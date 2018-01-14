@@ -136,6 +136,7 @@ namespace Vst {
 	}
 
 
+	
 	tresult PLUGIN_API BypassProcessor::setState(IBStream* state)
 	{
 		/*

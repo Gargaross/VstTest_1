@@ -42,11 +42,13 @@ namespace Steinberg {
 			//bool PLUGIN_API doTest() SMTG_OVERRIDE;
 
 			//---Interface---------
+			/*
 			OBJ_METHODS(BypassController, EditController)
 				DEFINE_INTERFACES
 				//DEF_INTERFACE(IBypassTestController)
 				END_DEFINE_INTERFACES(EditController)
 				REFCOUNT_METHODS(EditController)
+				*/
 		};
 
 		//------------------------------------------------------------------------
