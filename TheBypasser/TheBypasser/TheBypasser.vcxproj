@@ -273,6 +273,7 @@
     <Image Include="resource\background.png" />
     <Image Include="resource\buttonOff.png" />
     <Image Include="resource\buttonOn.png" />
+    <Image Include="resource\buttonOnOff.png" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource\TheBypasser.rc" />

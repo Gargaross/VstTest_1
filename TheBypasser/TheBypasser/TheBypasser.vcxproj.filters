@@ -264,6 +264,9 @@
     <Image Include="resource\buttonOn.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="resource\buttonOnOff.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource\TheBypasser.rc">

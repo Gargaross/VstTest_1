@@ -1,10 +1,14 @@
 
 #include "BypassProcessor.h"
+#include "BypassController.h"
 #include "TheBypasser.h"
+//#include "pluginterfaces/base/ustring.h"
+#include "pluginterfaces/base/ibstream.h"
+#include "pluginterfaces/vst/ivstparameterchanges.h"
 
 namespace Steinberg {
 namespace Vst {
-	BypassProcessor::BypassProcessor()
+	BypassProcessor::BypassProcessor() : mBypass(false)
 	{
 		setControllerClass(BypassControllerUID);
 	}
@@ -18,6 +22,7 @@ namespace Vst {
 			addAudioInput(STR16("AudioInput"), SpeakerArr::kStereo);
 			addAudioOutput(STR16("AudioOutput"), SpeakerArr::kStereo);
 		}
+
 		return result;
 	}
 
@@ -56,39 +61,28 @@ namespace Vst {
 	{
 		if (data.inputParameterChanges)
 		{
-			// apply parameter changes
-
-			/*
-			int32 numParamsChanged = data.inputParameterChanges->getParameterCount();
-			for (int32 index = 0; index < numParamsChanged; index++)
-			{
+			int32 numParams = data.inputParameterChanges->getParameterCount();
+			for (int32 index = 0; index < numParams; index++) {
 				IParamValueQueue* paramQueue = data.inputParameterChanges->getParameterData(index);
-				if (paramQueue)
-				{
+				if (paramQueue) {
 					ParamValue value;
 					int32 sampleOffset;
 					int32 numPoints = paramQueue->getPointCount();
-					switch (paramQueue->getParameterId())
-					{
-					case kDelayId:
-						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue)
-							mDelay = value;
-						break;
-					case kBypassId:
-						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue)
-						{
+					
+					uint32 id = paramQueue->getParameterId();
+
+					if (id == kBypassId) {
+						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue) {
 							mBypass = (value > 0.5f);
 						}
-						break;
 					}
 				}
 			}
-			*/
 		}
 
 		if (data.numSamples > 0)
 		{
-			// process samples
+			// Both FL Studio 12 and VST Host tester uses 32 bit samples
 
 			SpeakerArrangement arr;
 			getBusArrangement(kOutput, 0, arr);
@@ -96,84 +90,46 @@ namespace Vst {
 
 			for (int32 channel = 0; channel < numChannels; channel++) {
 				float* outputChannel = data.outputs[0].channelBuffers32[channel];
+				float* inputChannel = data.inputs[0].channelBuffers32[channel];
 
 				for (int32 sample = 0; sample < data.numSamples; sample++) {
-					outputChannel[sample] = 0;
+					if (mBypass)
+						outputChannel[sample] = inputChannel[sample];
+					else
+						outputChannel[sample] = 0;
 				}
 			}
-
-			/*
-			SpeakerArrangement arr;
-			getBusArrangement(kOutput, 0, arr);
-			int32 numChannels = SpeakerArr::getChannelCount(arr);
-
-			// TODO do something in Bypass : copy inpuit to output if necessary...
-
-			// apply delay
-			int32 delayInSamples = std::max<int32>(1, (int32)(mDelay * processSetup.sampleRate)); // we have a minimum of 1 sample delay here
-			for (int32 channel = 0; channel < numChannels; channel++)
-			{
-				float* inputChannel = data.inputs[0].channelBuffers32[channel];
-				float* outputChannel = data.outputs[0].channelBuffers32[channel];
-
-				int32 tempBufferPos = mBufferPos;
-				for (int32 sample = 0; sample < data.numSamples; sample++)
-				{
-					float tempSample = inputChannel[sample];
-					outputChannel[sample] = mBuffer[channel][tempBufferPos];
-					mBuffer[channel][tempBufferPos] = tempSample;
-					tempBufferPos++;
-					if (tempBufferPos >= delayInSamples)
-						tempBufferPos = 0;
-				}
-			}
-			mBufferPos += data.numSamples;
-			while (delayInSamples && mBufferPos >= delayInSamples)
-				mBufferPos -= delayInSamples;
-			*/
 		}
 		return kResultTrue;
 	}
 
 
-	
 	tresult PLUGIN_API BypassProcessor::setState(IBStream* state)
 	{
-		/*
 		if (!state)
 			return kResultFalse;
 
 		// called when we load a preset, the model has to be reloaded
 
-		float savedDelay = 0.f;
-		if (state->read(&savedDelay, sizeof(float)) != kResultOk)
-		{
-			return kResultFalse;
-		}
-
 		int32 savedBypass = 0;
 		if (state->read(&savedBypass, sizeof(int32)) != kResultOk)
 		{
-			// could be an old version, continue 
+			// could be an old version, continue
 		}
 
 #if BYTEORDER == kBigEndian
-		SWAP_32(savedDelay)
 			SWAP_32(savedBypass)
 #endif
 
-			mDelay = savedDelay;
 		mBypass = savedBypass > 0;
 
-		return kResultOk;
-		*/
 		return kResultTrue;
 	}
 
-
+	/*
 	tresult PLUGIN_API BypassProcessor::getState(IBStream* state)
 	{
-		/*
+		
 		// here we need to save the model
 
 		float toSaveDelay = mDelay;
@@ -188,10 +144,8 @@ namespace Vst {
 		state->write(&toSaveBypass, sizeof(int32));
 
 		return kResultOk;
-		*/
-		return kResultTrue;
 	}
-
+	*/
 
 } // namespace Vst
 } // nmamespace Steinberg

@@ -9,27 +9,9 @@ namespace Steinberg {
 			kBypassId = 100
 		};
 
-		/*
-		//------------------------------------------------------------------------
-		class IBypassTestController : public FUnknown
+		class BypassController : public EditController
 		{
 		public:
-			virtual bool PLUGIN_API doTest() = 0;
-			//------------------------------------------------------------------------
-			static const FUID iid;
-		};
-		*/
-
-		//DECLARE_CLASS_IID(IBypassTestController, 0x5AC98F39, 0x27234512, 0x84FBC4AD, 0x618A14FD)
-
-		//-----------------------------------------------------------------------------
-		class BypassController : public EditController/*, public IBypassTestController*/
-		{
-		public:
-			//------------------------------------------------------------------------
-			// create function required for Plug-in factory,
-			// it will be called to create new instances of this controller
-			//------------------------------------------------------------------------
 			static FUnknown* createInstance(void*) { return (IEditController*)new BypassController(); }
 
 			//---from IPluginBase--------
@@ -38,8 +20,6 @@ namespace Steinberg {
 			tresult PLUGIN_API setComponentState(IBStream* state) SMTG_OVERRIDE;
 
 			IPlugView* PLUGIN_API createView(FIDString str) SMTG_OVERRIDE;
-
-			//bool PLUGIN_API doTest() SMTG_OVERRIDE;
 
 			//---Interface---------
 			/*
@@ -51,6 +31,5 @@ namespace Steinberg {
 				*/
 		};
 
-		//------------------------------------------------------------------------
 	} // namespace Vst
 } // namespace Steinberg

@@ -8,17 +8,12 @@
 namespace Steinberg {
 namespace Vst {
 
-		//DEF_CLASS_IID(IBypassTestController)
-
-		//-----------------------------------------------------------------------------
 		tresult PLUGIN_API BypassController::initialize(FUnknown* context)
 		{
 			tresult result = EditController::initialize(context);
 			if (result == kResultTrue)
 			{
 				parameters.addParameter(STR16("Bypass"), 0, 1, 0, ParameterInfo::kCanAutomate | ParameterInfo::kIsBypass, kBypassId);
-
-				//parameters.addParameter(STR16("Delay"), STR16("sec"), 0, 1, ParameterInfo::kCanAutomate, kDelayId);
 			}
 			return kResultTrue;
 		}
@@ -58,17 +53,6 @@ namespace Vst {
 			return kResultOk;
 		}
 
-		
-		/*
-		//------------------------------------------------------------------------
-		bool PLUGIN_API BypassController::doTest()
-		{
-			// this is called when running thru the validator
-			// we can now run our own test cases
-			return true;
-		}
-		*/
-
 		IPlugView* PLUGIN_API BypassController::createView(FIDString str)
 		{
 			// someone wants my editor
@@ -81,8 +65,6 @@ namespace Vst {
 			
 			return 0;
 		}
-		
 
-		//------------------------------------------------------------------------
 } // namespace Vst
 } // namespace Steinberg

@@ -21,8 +21,8 @@ namespace Steinberg {
 			CView* backgroundView = new CView(CRect(0, 0, background->getWidth(), background->getHeight()));
 			backgroundView->setBackground(background);
 
-			CBitmap* buttonImg = new CBitmap("buttonOn.png");
-			CRect r(0, 0, buttonImg->getWidth(), buttonImg->getHeight());
+			CBitmap* buttonImg = new CBitmap("buttonOnOff.png");
+			CRect r(0, 0, buttonImg->getWidth(), buttonImg->getHeight()/2);
 			r.offset(100, 200);
 			COnOffButton* button = new COnOffButton(r, this, 0, buttonImg);
 
@@ -38,6 +38,11 @@ namespace Steinberg {
 		void PLUGIN_API BypassEditor::close()
 		{
 			
+		}
+
+		void BypassEditor::valueChanged(CControl* pControl)
+		{
+
 		}
 
 	} // namespace Vst
