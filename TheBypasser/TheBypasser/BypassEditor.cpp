@@ -7,7 +7,7 @@ namespace Steinberg {
 		BypassEditor::BypassEditor(void* controller, ViewRect* size)
 			: VSTGUIEditor(controller, size)
 		{
-			something = true;
+
 		}
 
 		bool PLUGIN_API BypassEditor::open(void* parent, const PlatformType& platformType)
@@ -30,7 +30,7 @@ namespace Steinberg {
 			background->forget();
 			buttonImg->forget();
 
-			//frame->addView(backgroundView);
+			frame->addView(backgroundView);
 			frame->addView(button);
 
 			return true;
@@ -43,24 +43,12 @@ namespace Steinberg {
 
 		void BypassEditor::valueChanged(CControl* pControl)
 		{
-			
-
 			int tag = pControl->getTag();
 			if (tag == kBypassId) {
-				//controller->beginEdit(tag);
-				//int32 value = pControl->getValue();
-				//int32 valueNorm = pControl->getValueNormalized();
-				//controller->endEdit(tag);
-
-				if (something) {
-					frame->setBackgroundColor(kRedCColor);
-				}
-				else {
-					frame->setBackgroundColor(kBlueCColor);
-				}
-				something = !something;
-
-
+				controller->beginEdit(tag);
+				int32 value = pControl->getValue();
+				int32 valueNorm = pControl->getValueNormalized();
+				controller->endEdit(tag);
 			}
 		}
 
