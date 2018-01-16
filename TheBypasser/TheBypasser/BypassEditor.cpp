@@ -46,8 +46,7 @@ namespace Steinberg {
 			int tag = pControl->getTag();
 			if (tag == kBypassId) {
 				controller->beginEdit(tag);
-				int32 value = pControl->getValue();
-				int32 valueNorm = pControl->getValueNormalized();
+				controller->performEdit(tag, pControl->getValueNormalized());
 				controller->endEdit(tag);
 			}
 		}
