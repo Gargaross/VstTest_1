@@ -1,4 +1,5 @@
 #include "BypassEditor.h"
+#include "BypassController.h"
 
 namespace Steinberg {
 	namespace Vst {
@@ -6,7 +7,7 @@ namespace Steinberg {
 		BypassEditor::BypassEditor(void* controller, ViewRect* size)
 			: VSTGUIEditor(controller, size)
 		{
-
+			something = true;
 		}
 
 		bool PLUGIN_API BypassEditor::open(void* parent, const PlatformType& platformType)
@@ -24,12 +25,12 @@ namespace Steinberg {
 			CBitmap* buttonImg = new CBitmap("buttonOnOff.png");
 			CRect r(0, 0, buttonImg->getWidth(), buttonImg->getHeight()/2);
 			r.offset(100, 200);
-			COnOffButton* button = new COnOffButton(r, this, 0, buttonImg);
+			COnOffButton* button = new COnOffButton(r, this, kBypassId, buttonImg);
 
 			background->forget();
 			buttonImg->forget();
 
-			frame->addView(backgroundView);
+			//frame->addView(backgroundView);
 			frame->addView(button);
 
 			return true;
@@ -42,7 +43,25 @@ namespace Steinberg {
 
 		void BypassEditor::valueChanged(CControl* pControl)
 		{
+			
 
+			int tag = pControl->getTag();
+			if (tag == kBypassId) {
+				//controller->beginEdit(tag);
+				//int32 value = pControl->getValue();
+				//int32 valueNorm = pControl->getValueNormalized();
+				//controller->endEdit(tag);
+
+				if (something) {
+					frame->setBackgroundColor(kRedCColor);
+				}
+				else {
+					frame->setBackgroundColor(kBlueCColor);
+				}
+				something = !something;
+
+
+			}
 		}
 
 	} // namespace Vst

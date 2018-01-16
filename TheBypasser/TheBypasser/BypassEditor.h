@@ -14,6 +14,9 @@ namespace Steinberg {
 			void PLUGIN_API close() SMTG_OVERRIDE;
 
 			void valueChanged(CControl* pControl);
+
+		private:
+			bool something;
 		};
 
 	} // namespace Vst
