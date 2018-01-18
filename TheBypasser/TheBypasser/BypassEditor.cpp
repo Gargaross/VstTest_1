@@ -38,7 +38,7 @@ namespace Steinberg {
 
 		void PLUGIN_API BypassEditor::close()
 		{
-			
+			frame->forget();
 		}
 
 		void BypassEditor::valueChanged(CControl* pControl)

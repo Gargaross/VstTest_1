@@ -18,7 +18,7 @@ public:
 
 	//------------------------------------------------------------------------
 	tresult PLUGIN_API setState(IBStream* state) SMTG_OVERRIDE;
-	//tresult PLUGIN_API getState(IBStream* state) SMTG_OVERRIDE;
+	tresult PLUGIN_API getState(IBStream* state) SMTG_OVERRIDE;
 
 	static FUnknown* createInstance(void*) { return (IAudioProcessor*)new BypassProcessor(); }
 

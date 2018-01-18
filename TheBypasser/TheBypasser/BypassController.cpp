@@ -25,20 +25,6 @@ namespace Vst {
 			// we read only the gain and bypass value...
 			if (state)
 			{
-				/*
-				float savedDelay = 0.f;
-				if (state->read(&savedDelay, sizeof(float)) != kResultOk)
-				{
-					return kResultFalse;
-				}
-
-#if BYTEORDER == kBigEndian
-				SWAP_32(savedDelay)
-#endif
-					setParamNormalized(kDelayId, savedDelay);
-
-				*/
-
 				// read the bypass
 				int32 bypassState;
 				if (state->read(&bypassState, sizeof(bypassState)) == kResultTrue)
@@ -51,6 +37,49 @@ namespace Vst {
 			}
 
 			return kResultOk;
+		}
+
+		tresult PLUGIN_API BypassController::setState(IBStream* state)
+		{
+			// we receive the current state of the component (processor part)
+			// we read only the gain and bypass value...
+			if (state)
+			{
+				// read the bypass
+				int32 bypassState;
+				if (state->read(&bypassState, sizeof(bypassState)) == kResultTrue)
+				{
+#if BYTEORDER == kBigEndian
+					SWAP_32(bypassState)
+#endif
+					setParamNormalized(kBypassId, bypassState ? 1 : 0);
+				}
+			}
+
+			return kResultOk;
+		}
+
+		tresult PLUGIN_API BypassController::getState(IBStream* state)
+		{
+			int32 bypassState = getParamNormalized(kBypassId);
+
+#if BYTEORDER == kBigEndian
+				SWAP_32(bypassState)
+#endif
+			state->write(&bypassState, sizeof(bypassState));
+
+				return kResultTrue;
+		}
+
+		tresult PLUGIN_API BypassController::setParamNormalized(ParamID tag, ParamValue value)
+		{
+			Parameter* parameter = getParameterObject(tag);
+			if (parameter)
+			{
+				parameter->setNormalized(value);
+				return kResultTrue;
+			}
+			return kResultFalse;
 		}
 
 		IPlugView* PLUGIN_API BypassController::createView(FIDString str)

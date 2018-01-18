@@ -18,6 +18,9 @@ namespace Steinberg {
 			tresult PLUGIN_API initialize(FUnknown* context) SMTG_OVERRIDE;
 
 			tresult PLUGIN_API setComponentState(IBStream* state) SMTG_OVERRIDE;
+			tresult PLUGIN_API setState(IBStream* state) SMTG_OVERRIDE;
+			tresult PLUGIN_API getState(IBStream* state) SMTG_OVERRIDE;
+			tresult PLUGIN_API setParamNormalized(ParamID tag, ParamValue value) SMTG_OVERRIDE;
 
 			IPlugView* PLUGIN_API createView(FIDString str) SMTG_OVERRIDE;
 

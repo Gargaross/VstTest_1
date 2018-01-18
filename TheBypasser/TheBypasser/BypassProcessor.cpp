@@ -126,26 +126,23 @@ namespace Vst {
 		return kResultTrue;
 	}
 
-	/*
+	
 	tresult PLUGIN_API BypassProcessor::getState(IBStream* state)
 	{
 		
 		// here we need to save the model
 
-		float toSaveDelay = mDelay;
 		int32 toSaveBypass = mBypass ? 1 : 0;
 
 #if BYTEORDER == kBigEndian
-		SWAP_32(toSaveDelay)
 			SWAP_32(toSaveBypass)
 #endif
 
-			state->write(&toSaveDelay, sizeof(float));
 		state->write(&toSaveBypass, sizeof(int32));
 
 		return kResultOk;
 	}
-	*/
+	
 
 } // namespace Vst
 } // nmamespace Steinberg
