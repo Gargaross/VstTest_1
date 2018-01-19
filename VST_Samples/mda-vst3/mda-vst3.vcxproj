@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{E215353E-3A0E-4E76-8196-57DD8B716B23}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>channelcontext</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.vst3</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.vst3</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.vst3</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.vst3</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;CHANNELCONTEXT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\..\vst3sdk\vstgui4;..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ModuleDefinitionFile>vst3</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;CHANNELCONTEXT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\..\vst3sdk\vstgui4;..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ModuleDefinitionFile>vst3</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)$(Platform)\$(Configuration)\$(TargetFileName)" "C:\Program Files\Common Files\VST3"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;CHANNELCONTEXT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\..\vst3sdk\vstgui4;..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ModuleDefinitionFile>vst3</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;CHANNELCONTEXT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\..\vst3sdk\vstgui4;..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ModuleDefinitionFile>vst3</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\baseiids.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fbuffer.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fdebug.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fdynlib.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fobject.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fstreamer.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fstring.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\base\source\timer.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\base\source\updatehandler.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\base\thread\source\fcondition.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\base\thread\source\flock.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\conststringtable.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\coreiids.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\funknown.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\ustring.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\common\memorystream.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\common\pluginview.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\dllmain.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\pluginfactoryvst3.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst3stdsdk.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstinitiids.cpp" />
+    <ClCompile Include="source\mdaAmbienceController.cpp" />
+    <ClCompile Include="source\mdaAmbienceProcessor.cpp" />
+    <ClCompile Include="source\mdaBandistoController.cpp" />
+    <ClCompile Include="source\mdaBandistoProcessor.cpp" />
+    <ClCompile Include="source\mdaBaseController.cpp" />
+    <ClCompile Include="source\mdaBaseProcessor.cpp" />
+    <ClCompile Include="source\mdaBeatBoxController.cpp" />
+    <ClCompile Include="source\mdaBeatBoxProcessor.cpp" />
+    <ClCompile Include="source\mdaComboController.cpp" />
+    <ClCompile Include="source\mdaComboProcessor.cpp" />
+    <ClCompile Include="source\mdaDeEsserController.cpp" />
+    <ClCompile Include="source\mdaDeEsserProcessor.cpp" />
+    <ClCompile Include="source\mdaDegradeController.cpp" />
+    <ClCompile Include="source\mdaDegradeProcessor.cpp" />
+    <ClCompile Include="source\mdaDelayController.cpp" />
+    <ClCompile Include="source\mdaDelayProcessor.cpp" />
+    <ClCompile Include="source\mdaDetuneController.cpp" />
+    <ClCompile Include="source\mdaDetuneProcessor.cpp" />
+    <ClCompile Include="source\mdaDitherController.cpp" />
+    <ClCompile Include="source\mdaDitherProcessor.cpp" />
+    <ClCompile Include="source\mdaDubDelayController.cpp" />
+    <ClCompile Include="source\mdaDubDelayProcessor.cpp" />
+    <ClCompile Include="source\mdaDX10Controller.cpp" />
+    <ClCompile Include="source\mdaDX10Processor.cpp" />
+    <ClCompile Include="source\mdaDynamicsController.cpp" />
+    <ClCompile Include="source\mdaDynamicsProcessor.cpp" />
+    <ClCompile Include="source\mdaEPianoController.cpp" />
+    <ClCompile Include="source\mdaEPianoProcessor.cpp" />
+    <ClCompile Include="source\mdafactory.cpp" />
+    <ClCompile Include="source\mdaImageController.cpp" />
+    <ClCompile Include="source\mdaImageProcessor.cpp" />
+    <ClCompile Include="source\mdaJX10Controller.cpp" />
+    <ClCompile Include="source\mdaJX10Processor.cpp" />
+    <ClCompile Include="source\mdaLeslieController.cpp" />
+    <ClCompile Include="source\mdaLeslieProcessor.cpp" />
+    <ClCompile Include="source\mdaLimiterController.cpp" />
+    <ClCompile Include="source\mdaLimiterProcessor.cpp" />
+    <ClCompile Include="source\mdaLoudnessController.cpp" />
+    <ClCompile Include="source\mdaLoudnessProcessor.cpp" />
+    <ClCompile Include="source\mdaMultiBandController.cpp" />
+    <ClCompile Include="source\mdaMultiBandProcessor.cpp" />
+    <ClCompile Include="source\mdaOverdriveController.cpp" />
+    <ClCompile Include="source\mdaOverdriveProcessor.cpp" />
+    <ClCompile Include="source\mdaParameter.cpp" />
+    <ClCompile Include="source\mdaPianoController.cpp" />
+    <ClCompile Include="source\mdaPianoProcessor.cpp" />
+    <ClCompile Include="source\mdaRePsychoController.cpp" />
+    <ClCompile Include="source\mdaRePsychoProcessor.cpp" />
+    <ClCompile Include="source\mdaRezFilterController.cpp" />
+    <ClCompile Include="source\mdaRezFilterProcessor.cpp" />
+    <ClCompile Include="source\mdaRingModController.cpp" />
+    <ClCompile Include="source\mdaRingModProcessor.cpp" />
+    <ClCompile Include="source\mdaRoundPanController.cpp" />
+    <ClCompile Include="source\mdaRoundPanProcessor.cpp" />
+    <ClCompile Include="source\mdaShepardController.cpp" />
+    <ClCompile Include="source\mdaShepardProcessor.cpp" />
+    <ClCompile Include="source\mdaSpecMeterController.cpp" />
+    <ClCompile Include="source\mdaSpecMeterProcessor.cpp" />
+    <ClCompile Include="source\mdaSplitterController.cpp" />
+    <ClCompile Include="source\mdaSplitterProcessor.cpp" />
+    <ClCompile Include="source\mdaStereoController.cpp" />
+    <ClCompile Include="source\mdaStereoProcessor.cpp" />
+    <ClCompile Include="source\mdaSubSynthController.cpp" />
+    <ClCompile Include="source\mdaSubSynthProcessor.cpp" />
+    <ClCompile Include="source\mdaTalkBoxController.cpp" />
+    <ClCompile Include="source\mdaTalkBoxProcessor.cpp" />
+    <ClCompile Include="source\mdaTestToneController.cpp" />
+    <ClCompile Include="source\mdaTestToneProcessor.cpp" />
+    <ClCompile Include="source\mdaThruZeroController.cpp" />
+    <ClCompile Include="source\mdaThruZeroProcessor.cpp" />
+    <ClCompile Include="source\mdaTrackerController.cpp" />
+    <ClCompile Include="source\mdaTrackerProcessor.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\classfactoryhelpers.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fbuffer.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fcleanup.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fcommandline.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fdebug.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fdynlib.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fobject.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fstdmethods.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fstreamer.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fstring.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\hexbinary.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\timer.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\updatehandler.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\conststringtable.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\doc.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\falignpop.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\falignpush.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\fplatform.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\fstrdefs.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ftypes.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\funknown.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\futils.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\fvariant.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\geoconstants.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ibstream.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\icloneable.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ierrorcontext.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ipersistent.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ipluginbase.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\istringresult.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\iupdatehandler.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\keycodes.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\pluginbasefwd.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\smartpointer.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ucolorspec.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ustring.h" />
+    <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\common\memorystream.h" />
+    <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\common\pluginview.h" />
+    <ClInclude Include="source\helpers.h" />
+    <ClInclude Include="source\mdaAmbienceController.h" />
+    <ClInclude Include="source\mdaAmbienceProcessor.h" />
+    <ClInclude Include="source\mdaBandistoController.h" />
+    <ClInclude Include="source\mdaBandistoProcessor.h" />
+    <ClInclude Include="source\mdaBaseController.h" />
+    <ClInclude Include="source\mdaBaseProcessor.h" />
+    <ClInclude Include="source\mdaBeatBoxController.h" />
+    <ClInclude Include="source\mdaBeatBoxProcessor.h" />
+    <ClInclude Include="source\mdaComboController.h" />
+    <ClInclude Include="source\mdaComboProcessor.h" />
+    <ClInclude Include="source\mdaDeEsserController.h" />
+    <ClInclude Include="source\mdaDeEsserProcessor.h" />
+    <ClInclude Include="source\mdaDegradeController.h" />
+    <ClInclude Include="source\mdaDegradeProcessor.h" />
+    <ClInclude Include="source\mdaDelayController.h" />
+    <ClInclude Include="source\mdaDelayProcessor.h" />
+    <ClInclude Include="source\mdaDetuneController.h" />
+    <ClInclude Include="source\mdaDetuneProcessor.h" />
+    <ClInclude Include="source\mdaDitherController.h" />
+    <ClInclude Include="source\mdaDitherProcessor.h" />
+    <ClInclude Include="source\mdaDubDelayController.h" />
+    <ClInclude Include="source\mdaDubDelayProcessor.h" />
+    <ClInclude Include="source\mdaDX10Controller.h" />
+    <ClInclude Include="source\mdaDX10Processor.h" />
+    <ClInclude Include="source\mdaDynamicsController.h" />
+    <ClInclude Include="source\mdaDynamicsProcessor.h" />
+    <ClInclude Include="source\mdaEPianoController.h" />
+    <ClInclude Include="source\mdaEPianoData.h" />
+    <ClInclude Include="source\mdaEPianoProcessor.h" />
+    <ClInclude Include="source\mdaImageController.h" />
+    <ClInclude Include="source\mdaImageProcessor.h" />
+    <ClInclude Include="source\mdaJX10Controller.h" />
+    <ClInclude Include="source\mdaJX10Processor.h" />
+    <ClInclude Include="source\mdaLeslieController.h" />
+    <ClInclude Include="source\mdaLeslieProcessor.h" />
+    <ClInclude Include="source\mdaLimiterController.h" />
+    <ClInclude Include="source\mdaLimiterProcessor.h" />
+    <ClInclude Include="source\mdaLoudnessController.h" />
+    <ClInclude Include="source\mdaLoudnessProcessor.h" />
+    <ClInclude Include="source\mdaMultiBandController.h" />
+    <ClInclude Include="source\mdaMultiBandProcessor.h" />
+    <ClInclude Include="source\mdaOverdriveController.h" />
+    <ClInclude Include="source\mdaOverdriveProcessor.h" />
+    <ClInclude Include="source\mdaParameter.h" />
+    <ClInclude Include="source\mdaPianoController.h" />
+    <ClInclude Include="source\mdaPianoData.h" />
+    <ClInclude Include="source\mdaPianoProcessor.h" />
+    <ClInclude Include="source\mdaRePsychoController.h" />
+    <ClInclude Include="source\mdaRePsychoProcessor.h" />
+    <ClInclude Include="source\mdaRezFilterController.h" />
+    <ClInclude Include="source\mdaRezFilterProcessor.h" />
+    <ClInclude Include="source\mdaRingModController.h" />
+    <ClInclude Include="source\mdaRingModProcessor.h" />
+    <ClInclude Include="source\mdaRoundPanController.h" />
+    <ClInclude Include="source\mdaRoundPanProcessor.h" />
+    <ClInclude Include="source\mdaShepardController.h" />
+    <ClInclude Include="source\mdaShepardProcessor.h" />
+    <ClInclude Include="source\mdaSpecMeterController.h" />
+    <ClInclude Include="source\mdaSpecMeterProcessor.h" />
+    <ClInclude Include="source\mdaSplitterController.h" />
+    <ClInclude Include="source\mdaSplitterProcessor.h" />
+    <ClInclude Include="source\mdaStereoController.h" />
+    <ClInclude Include="source\mdaStereoProcessor.h" />
+    <ClInclude Include="source\mdaSubSynthController.h" />
+    <ClInclude Include="source\mdaSubSynthProcessor.h" />
+    <ClInclude Include="source\mdaTalkBoxController.h" />
+    <ClInclude Include="source\mdaTalkBoxProcessor.h" />
+    <ClInclude Include="source\mdaTestToneController.h" />
+    <ClInclude Include="source\mdaTestToneProcessor.h" />
+    <ClInclude Include="source\mdaThruZeroController.h" />
+    <ClInclude Include="source\mdaThruZeroProcessor.h" />
+    <ClInclude Include="source\mdaTrackerController.h" />
+    <ClInclude Include="source\mdaTrackerProcessor.h" />
+    <ClInclude Include="source\version.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource\mda-vst3.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\mda-vst3-Info.plist" />
+    <None Include="vst3" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

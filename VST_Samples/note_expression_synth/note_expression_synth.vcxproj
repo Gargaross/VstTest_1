@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{18A53C90-16D3-46D7-9C94-C0F5C3D48C98}</ProjectGuid>
+    <ProjectGuid>{1BE1DE4E-9F12-434A-938C-7FF1A2B836CF}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>AGainTest1</RootNamespace>
+    <RootNamespace>channelcontext</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -44,7 +44,6 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -71,10 +70,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-    <TargetExt>.vst3</TargetExt>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.vst3</TargetExt>
@@ -82,109 +77,88 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.vst3</TargetExt>
-    <TargetName>$(ProjectName)_x64</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.vst3</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <TargetExt>.vst3</TargetExt>
-    <TargetName>$(ProjectName)_x64</TargetName>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;AGAINTEST1_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\..\vst3sdk\vstgui4;..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>again.def</ModuleDefinitionFile>
-    </Link>
-    <PostBuildEvent>
-      <Command>copy "$(SolutionDir)$(Configuration)\$(TargetFileName)" "C:\Program Files (x86)\Common Files\VST3"</Command>
-      <Message>Copy .vst3 file to VST3 directory</Message>
-    </PostBuildEvent>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;DEBUG;AGAINTEST1_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;CHANNELCONTEXT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\..\vst3sdk\vstgui4;..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>again.def</ModuleDefinitionFile>
+      <SubSystem>Windows</SubSystem>
+      <ModuleDefinitionFile>vst3</ModuleDefinitionFile>
     </Link>
-    <ResourceCompile>
-      <AdditionalIncludeDirectories>..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;DEBUG;AGAINTEST1_EXPORTS;_WINDOWS;_USRDLL;VSTGUI_LIVE_EDITING=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;CHANNELCONTEXT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\..\vst3sdk\vstgui4;..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>again.def</ModuleDefinitionFile>
+      <SubSystem>Windows</SubSystem>
+      <ModuleDefinitionFile>vst3</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)$(Platform)\$(Configuration)\$(TargetFileName)" "C:\Program Files\Common Files\VST3"</Command>
-      <Message>Copy .vst3 file to VST3 directory</Message>
     </PostBuildEvent>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;AGAINTEST1_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;CHANNELCONTEXT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\..\vst3sdk\vstgui4;..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>again.def</ModuleDefinitionFile>
+      <SubSystem>Windows</SubSystem>
+      <ModuleDefinitionFile>vst3</ModuleDefinitionFile>
     </Link>
-    <PostBuildEvent>
-      <Command>copy "$(SolutionDir)$(Platform)\$(Configuration)\$(TargetFileName)" "C:\Program Files\Common Files\VST3"</Command>
-      <Message>Copy .vst3 file to VST3 directory</Message>
-    </PostBuildEvent>
-    <ResourceCompile>
-      <AdditionalIncludeDirectories>..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;CHANNELCONTEXT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\..\vst3sdk\vstgui4;..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ModuleDefinitionFile>vst3</ModuleDefinitionFile>
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\vst3sdk\base\source\baseiids.cpp" />
@@ -209,38 +183,83 @@
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst3stdsdk.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstguieditor.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstinitiids.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstnoteexpressiontypes.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3editor.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3groupcontroller.cpp" />
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3padcontroller.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_uidescription_win32.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_win32.cpp" />
-    <ClCompile Include="source\again.cpp" />
-    <ClCompile Include="source\againcontroller.cpp" />
-    <ClCompile Include="source\againentry.cpp" />
-    <ClCompile Include="source\againsidechain.cpp" />
+    <ClCompile Include="note_expression_synth\source\factory.cpp" />
+    <ClCompile Include="note_expression_synth\source\note_expression_synth_controller.cpp" />
+    <ClCompile Include="note_expression_synth\source\note_expression_synth_processor.cpp" />
+    <ClCompile Include="note_expression_synth\source\note_expression_synth_ui.cpp" />
+    <ClCompile Include="note_expression_synth\source\note_expression_synth_voice.cpp" />
+    <ClCompile Include="note_expression_synth\source\note_touch_controller.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="again.def" />
-    <None Include="resource\again.uidesc" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\classfactoryhelpers.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fbuffer.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fcleanup.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fcommandline.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fdebug.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fdynlib.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fobject.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fstdmethods.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fstreamer.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fstring.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\hexbinary.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\timer.h" />
+    <ClInclude Include="..\..\..\vst3sdk\base\source\updatehandler.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\conststringtable.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\doc.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\falignpop.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\falignpush.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\fplatform.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\fstrdefs.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ftypes.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\funknown.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\futils.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\fvariant.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\geoconstants.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ibstream.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\icloneable.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ierrorcontext.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ipersistent.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ipluginbase.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\istringresult.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\iupdatehandler.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\keycodes.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\pluginbasefwd.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\smartpointer.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ucolorspec.h" />
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ustring.h" />
+    <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\common\memorystream.h" />
+    <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\common\pluginview.h" />
+    <ClInclude Include="note_expression_synth\source\brownnoise.h" />
+    <ClInclude Include="note_expression_synth\source\filter.h" />
+    <ClInclude Include="note_expression_synth\source\note_expression_synth_controller.h" />
+    <ClInclude Include="note_expression_synth\source\note_expression_synth_processor.h" />
+    <ClInclude Include="note_expression_synth\source\note_expression_synth_ui.h" />
+    <ClInclude Include="note_expression_synth\source\note_expression_synth_voice.h" />
+    <ClInclude Include="note_expression_synth\source\note_touch_controller.h" />
+    <ClInclude Include="note_expression_synth\source\version.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\again.h" />
-    <ClInclude Include="source\againcids.h" />
-    <ClInclude Include="source\againcontroller.h" />
-    <ClInclude Include="source\againparamids.h" />
-    <ClInclude Include="source\againprocess.h" />
-    <ClInclude Include="source\againsidechain.h" />
-    <ClInclude Include="source\againuimessagecontroller.h" />
-    <ClInclude Include="source\version.h" />
+    <Image Include="note_expression_synth\resource\about.png" />
+    <Image Include="note_expression_synth\resource\background.png" />
+    <Image Include="note_expression_synth\resource\groupframe.png" />
+    <Image Include="note_expression_synth\resource\knob big.png" />
+    <Image Include="note_expression_synth\resource\knob.png" />
+    <Image Include="note_expression_synth\resource\knob2.png" />
+    <Image Include="note_expression_synth\resource\vst3_logo_small.png" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="resource\again.rc" />
+    <None Include="note_expression_synth\resource\Info.plist" />
+    <None Include="note_expression_synth\resource\note_expression_synth.uidesc" />
+    <None Include="vst3" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resource\background.png" />
-    <Image Include="resource\slider_background.png" />
-    <Image Include="resource\slider_handle.png" />
-    <Image Include="resource\slider_handle_2.0x.png" />
-    <Image Include="resource\vu_off.png" />
-    <Image Include="resource\vu_on.png" />
+    <ResourceCompile Include="note_expression_synth\resource\note_expression_synth.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

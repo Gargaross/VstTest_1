@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\baseiids.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\conststringtable.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\coreiids.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\dllmain.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fbuffer.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\thread\source\fcondition.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fdebug.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fdynlib.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\thread\source\flock.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fobject.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fstreamer.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fstring.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\funknown.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\common\memorystream.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\pluginfactoryvst3.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\common\pluginview.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\timer.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\updatehandler.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\ustring.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst3stdsdk.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstinitiids.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="note_expression_synth\source\note_expression_synth_ui.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="note_expression_synth\source\note_expression_synth_voice.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="note_expression_synth\source\note_touch_controller.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="note_expression_synth\source\factory.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="note_expression_synth\source\note_expression_synth_controller.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="note_expression_synth\source\note_expression_synth_processor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstnoteexpressiontypes.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstguieditor.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_uidescription_win32.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_win32.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3editor.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3groupcontroller.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3padcontroller.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\classfactoryhelpers.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\conststringtable.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\doc.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\falignpop.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\falignpush.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fbuffer.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fcleanup.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fcommandline.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fdebug.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fdynlib.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fobject.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\fplatform.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fstdmethods.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\fstrdefs.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fstreamer.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fstring.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ftypes.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\funknown.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\futils.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\fvariant.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\geoconstants.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\hexbinary.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ibstream.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\icloneable.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ierrorcontext.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ipersistent.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ipluginbase.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\istringresult.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\iupdatehandler.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\keycodes.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\common\memorystream.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\pluginbasefwd.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\common\pluginview.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\smartpointer.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\timer.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ucolorspec.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\updatehandler.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ustring.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="note_expression_synth\source\note_expression_synth_processor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="note_expression_synth\source\note_expression_synth_ui.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="note_expression_synth\source\note_expression_synth_voice.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="note_expression_synth\source\note_touch_controller.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="note_expression_synth\source\version.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="note_expression_synth\source\brownnoise.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="note_expression_synth\source\filter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="note_expression_synth\source\note_expression_synth_controller.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="VST Source">
+      <UniqueIdentifier>{f18f21c6-4b58-469c-8356-0a4bb54e48a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{6850e39b-fc8e-45ed-b8d2-9e7d1d92a1fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{b00ea268-c3e9-4467-b5ad-90fce9edee0d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="note_expression_synth\resource\about.png">
+      <Filter>Resource</Filter>
+    </Image>
+    <Image Include="note_expression_synth\resource\background.png">
+      <Filter>Resource</Filter>
+    </Image>
+    <Image Include="note_expression_synth\resource\groupframe.png">
+      <Filter>Resource</Filter>
+    </Image>
+    <Image Include="note_expression_synth\resource\knob big.png">
+      <Filter>Resource</Filter>
+    </Image>
+    <Image Include="note_expression_synth\resource\knob.png">
+      <Filter>Resource</Filter>
+    </Image>
+    <Image Include="note_expression_synth\resource\knob2.png">
+      <Filter>Resource</Filter>
+    </Image>
+    <Image Include="note_expression_synth\resource\vst3_logo_small.png">
+      <Filter>Resource</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="note_expression_synth\resource\Info.plist">
+      <Filter>Resource</Filter>
+    </None>
+    <None Include="note_expression_synth\resource\note_expression_synth.uidesc">
+      <Filter>Resource</Filter>
+    </None>
+    <None Include="vst3">
+      <Filter>Source</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="note_expression_synth\resource\note_expression_synth.rc">
+      <Filter>Resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

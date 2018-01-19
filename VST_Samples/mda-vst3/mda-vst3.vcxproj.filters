@@ -1,0 +1,647 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\baseiids.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\conststringtable.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\coreiids.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\dllmain.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fbuffer.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\thread\source\fcondition.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fdebug.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fdynlib.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\thread\source\flock.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fobject.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fstreamer.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\fstring.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\funknown.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\common\memorystream.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\main\pluginfactoryvst3.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\common\pluginview.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\timer.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\base\source\updatehandler.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\pluginterfaces\base\ustring.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst3stdsdk.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\vst3sdk\public.sdk\source\vst\vstinitiids.cpp">
+      <Filter>VST Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaBaseController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaBaseProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaBeatBoxController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaBeatBoxProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaComboController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaComboProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDeEsserController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDeEsserProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDegradeController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDegradeProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDelayController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDelayProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDetuneController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDetuneProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDitherController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDitherProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDubDelayController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDubDelayProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDX10Controller.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDX10Processor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDynamicsController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaDynamicsProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaEPianoController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaEPianoProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdafactory.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaImageController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaImageProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaJX10Controller.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaJX10Processor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaLeslieController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaLeslieProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaLimiterController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaLimiterProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaLoudnessController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaLoudnessProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaMultiBandController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaMultiBandProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaOverdriveController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaOverdriveProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaParameter.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaPianoController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaPianoProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaRePsychoController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaRePsychoProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaRezFilterController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaRezFilterProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaRingModController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaRingModProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaRoundPanController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaRoundPanProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaShepardController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaShepardProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaSpecMeterController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaSpecMeterProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaSplitterController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaSplitterProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaStereoController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaStereoProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaSubSynthController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaSubSynthProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaTalkBoxController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaTalkBoxProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaTestToneController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaTestToneProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaThruZeroController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaThruZeroProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaTrackerController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaTrackerProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaAmbienceController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaAmbienceProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaBandistoController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mdaBandistoProcessor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\classfactoryhelpers.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\conststringtable.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\doc.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\falignpop.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\falignpush.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fbuffer.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fcleanup.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fcommandline.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fdebug.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fdynlib.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fobject.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\fplatform.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fstdmethods.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\fstrdefs.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fstreamer.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\fstring.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ftypes.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\funknown.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\futils.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\fvariant.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\geoconstants.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\hexbinary.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ibstream.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\icloneable.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ierrorcontext.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ipersistent.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ipluginbase.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\istringresult.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\iupdatehandler.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\keycodes.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\common\memorystream.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\pluginbasefwd.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\common\pluginview.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\smartpointer.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\timer.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ucolorspec.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\base\source\updatehandler.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\vst3sdk\pluginterfaces\base\ustring.h">
+      <Filter>VST Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaBandistoProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaBaseController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaBaseProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaBeatBoxController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaBeatBoxProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaComboController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaComboProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDeEsserController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDeEsserProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDegradeController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDegradeProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDelayController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDelayProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDetuneController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDetuneProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDitherController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDitherProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDubDelayController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDubDelayProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDX10Controller.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDX10Processor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDynamicsController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaDynamicsProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaEPianoController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaEPianoData.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaEPianoProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaImageController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaImageProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaJX10Controller.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaJX10Processor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaLeslieController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaLeslieProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaLimiterController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaLimiterProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaLoudnessController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaLoudnessProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaMultiBandController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaMultiBandProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaOverdriveController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaOverdriveProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaParameter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaPianoController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaPianoData.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaPianoProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaRePsychoController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaRePsychoProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaRezFilterController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaRezFilterProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaRingModController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaRingModProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaRoundPanController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaRoundPanProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaShepardController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaShepardProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaSpecMeterController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaSpecMeterProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaSplitterController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaSplitterProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaStereoController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaStereoProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaSubSynthController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaSubSynthProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaTalkBoxController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaTalkBoxProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaTestToneController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaTestToneProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaThruZeroController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaThruZeroProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaTrackerController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaTrackerProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\helpers.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaAmbienceController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaAmbienceProcessor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\mdaBandistoController.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\version.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="VST Source">
+      <UniqueIdentifier>{6b3ddbfa-7b1f-4f5a-b83d-76a38f3ac3be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{7edfbe67-de98-4d74-8e59-c517527f3197}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{04e90bed-7f81-4b06-a5db-acca86d85992}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource\mda-vst3.rc">
+      <Filter>Resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\mda-vst3-Info.plist">
+      <Filter>Resource</Filter>
+    </None>
+    <None Include="vst3" />
+  </ItemGroup>
+</Project>
