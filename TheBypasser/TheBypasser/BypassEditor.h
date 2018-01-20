@@ -4,6 +4,13 @@
 
 namespace Steinberg {
 	namespace Vst {
+		class ParameterChangeListener : public IControlListener,
+										public FObject
+		{
+
+		};
+
+
 		class BypassEditor : public VSTGUIEditor,
 							 public IControlListener
 		{
@@ -15,6 +22,11 @@ namespace Steinberg {
 
 			void valueChanged(CControl* pControl);
 			void controlBeginEdit(CControl* pControl) {}
+
+			void PLUGIN_API update(FUnknown* sender, int32 value) SMTG_OVERRIDE;
+
+		private:
+			COnOffButton* mButton;
 		};
 
 	} // namespace Vst

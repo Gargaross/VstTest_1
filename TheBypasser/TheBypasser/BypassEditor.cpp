@@ -23,9 +23,15 @@ namespace Steinberg {
 			backgroundView->setBackground(background);
 
 			CBitmap* buttonImg = new CBitmap("buttonOnOff.png");
-			CRect r(0, 0, buttonImg->getWidth(), buttonImg->getHeight()/2);
+			CRect r(0, 0, buttonImg->getWidth(), buttonImg->getHeight() / 2);
 			r.offset(100, 200);
 			COnOffButton* button = new COnOffButton(r, this, kBypassId, buttonImg);
+			mButton = button;
+			Parameter* buttonParam = controller->getParameterObject(kBypassId);
+			if (buttonParam) {
+				buttonParam->addRef();
+				buttonParam->addDependent(this);
+			}
 
 			background->forget();
 			buttonImg->forget();
@@ -48,6 +54,16 @@ namespace Steinberg {
 				controller->beginEdit(tag);
 				controller->performEdit(tag, pControl->getValueNormalized());
 				controller->endEdit(tag);
+			}
+		}
+
+		void PLUGIN_API BypassEditor::update(FUnknown* changedUnknown, Steinberg::int32 message)
+		{
+			if (message == IDependent::kChanged)
+			{
+				if (Parameter* p = dynamic_cast<Parameter*>(changedUnknown)) {
+					mButton->setValueNormalized(controller->getParamNormalized(kBypassId));
+				}
 			}
 		}
 

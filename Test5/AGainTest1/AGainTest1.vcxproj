@@ -133,6 +133,9 @@
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\vst3sdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)$(Configuration)\$(TargetFileName)" "C:\Program Files\Common Files\VST3"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
