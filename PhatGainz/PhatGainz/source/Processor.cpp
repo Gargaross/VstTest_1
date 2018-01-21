@@ -5,9 +5,13 @@
 #include "pluginterfaces/base/ibstream.h"
 #include "pluginterfaces/vst/ivstparameterchanges.h"
 
+#include "vstgui4\vstgui\lib\vstguidebug.h"
+
 namespace Steinberg {
 namespace Vst {
-	Processor::Processor() : mBypass(false)
+	Processor::Processor() : 
+		mBypass(false),
+		fGain(0.0)
 	{
 		setControllerClass(PhatGainzControllerUID);
 	}
@@ -75,6 +79,11 @@ namespace Vst {
 							mBypass = (value > 0.5f);
 						}
 					}
+					if (id == kGainId) {
+						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue) {
+							fGain = value;
+						}
+					}
 				}
 			}
 		}
@@ -96,6 +105,8 @@ namespace Vst {
 						outputChannel[sample] = inputChannel[sample];
 					else
 						outputChannel[sample] = 0;
+
+					outputChannel[sample] = inputChannel[sample]*fGain;
 				}
 			}
 		}
@@ -116,11 +127,18 @@ namespace Vst {
 			// could be an old version, continue
 		}
 
+		int32 savedGain = 0;
+		if (state->read(&savedGain, sizeof(int32)) != kResultOk) {
+
+		}
+
 #if BYTEORDER == kBigEndian
 			SWAP_32(savedBypass)
+			SWAP_32(savedGain)
 #endif
 
 		mBypass = savedBypass > 0;
+		fGain = savedGain;
 
 		return kResultTrue;
 	}
@@ -132,12 +150,15 @@ namespace Vst {
 		// here we need to save the model
 
 		int32 toSaveBypass = mBypass ? 1 : 0;
+		int32 toSavedGain = fGain;
 
 #if BYTEORDER == kBigEndian
 			SWAP_32(toSaveBypass)
+			SWAP_32(toSavedGain)
 #endif
 
 		state->write(&toSaveBypass, sizeof(int32));
+		state->write(&toSavedGain, sizeof(int32));
 
 		return kResultOk;
 	}

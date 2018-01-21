@@ -1,6 +1,14 @@
 #include "Editor.h"
 #include "Controller.h"
 
+bool DbReductionFunction(float value, std::string& result, CParamDisplay* display)
+{
+	float dbReduction = 10 * std::log10(pow(value, 2));
+	result = std::to_string(dbReduction);
+
+	return true;
+}
+
 namespace Steinberg {
 	namespace Vst {
 
@@ -22,28 +30,32 @@ namespace Steinberg {
 			//CView* backgroundView = new CView(CRect(0, 0, background->getWidth(), background->getHeight()));
 			//backgroundView->setBackground(background);
 
-			/*
-			CBitmap* buttonImg = new CBitmap("buttonOnOff.png");
-			CRect r(0, 0, buttonImg->getWidth(), buttonImg->getHeight() / 2);
-			r.offset(100, 200);
-			mBypassKnob = new COnOffButton(r, this, kBypassId, buttonImg);
-			if (Parameter* buttonParam = controller->getParameterObject(kBypassId)) {
-				buttonParam->addRef();
-				buttonParam->addDependent(this);
-			}
-			*/
-
 			CBitmap* gainKnobImg = new CBitmap("knob_big.png");
-			CRect r(0, 0, gainKnobImg->getWidth(), 82);
+			CRect r(0, 0, gainKnobImg->getWidth(), 84);
 			r.offset(100, 200);
-			mGainKnob = new CKnob(r, this, kGainId, gainKnobImg, gainKnobImg, CPoint(0, 0), CKnob::kHandleCircleDrawing);
 			mGainKnob = new CAnimKnob(r, this, kGainId, 80, 84, gainKnobImg, CPoint(0, 0));
 
-			//background->forget();
-			//buttonImg->forget();
+			CRect gainDisplayRect(0, 0, 80, 40);
+			gainDisplayRect.offset(200, 220);
+			mGainDisplay = new CParamDisplay(gainDisplayRect);
 
-			//frame->addView(backgroundView);
+			CRect gainReductionDisplayRect(0, 0, 80, 40);
+			gainReductionDisplayRect.offset(200, 260);
+			mGainReductionDisplay = new CParamDisplay(gainReductionDisplayRect);
+
+			mGainReductionDisplay->setValueToStringFunction2(DbReductionFunction);
+
+			gainKnobImg->forget();
+
 			frame->addView(mGainKnob);
+			frame->addView(mGainDisplay);
+			frame->addView(mGainReductionDisplay);
+
+			Parameter* gainParam = controller->getParameterObject(kGainId);
+			if (gainParam) {
+				gainParam->addRef();
+				gainParam->addDependent(this);
+			}
 
 			return true;
 		}
@@ -56,9 +68,18 @@ namespace Steinberg {
 		void Editor::valueChanged(CControl* pControl)
 		{
 			int tag = pControl->getTag();
-			if ((tag == kBypassId) || (tag == kGainId)) {
+			if (tag == kBypassId) {
 				controller->beginEdit(tag);
 				controller->performEdit(tag, pControl->getValueNormalized());
+				controller->endEdit(tag);
+			}
+			if (tag == kGainId) {
+				float valueNorm = pControl->getValueNormalized();
+
+				controller->beginEdit(tag);
+				controller->performEdit(tag, valueNorm);
+				mGainDisplay->setValueNormalized(valueNorm);
+				mGainReductionDisplay->setValueNormalized(valueNorm);
 				controller->endEdit(tag);
 			}
 		}
@@ -68,7 +89,9 @@ namespace Steinberg {
 			if (message == IDependent::kChanged)
 			{
 				if (Parameter* p = dynamic_cast<Parameter*>(changedUnknown)) {
-					mBypassKnob->setValueNormalized(controller->getParamNormalized(kBypassId));
+					//mBypassKnob->setValueNormalized(controller->getParamNormalized(kBypassId));
+					mGainKnob->setValueNormalized(controller->getParamNormalized(kGainId));
+					mGainDisplay->setValueNormalized(controller->getParamNormalized(kGainId));
 				}
 			}
 		}

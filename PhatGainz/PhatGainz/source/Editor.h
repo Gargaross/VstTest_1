@@ -5,8 +5,13 @@
 namespace Steinberg {
 	namespace Vst {
 
+		class DbReductionDisplay : public CParamDisplay
+		{
+
+		};
+
 		class Editor : public VSTGUIEditor,
-							 public IControlListener
+						public IControlListener
 		{
 		public:
 			Editor(void* controller, ViewRect* size = nullptr);
@@ -22,6 +27,8 @@ namespace Steinberg {
 		private:
 			COnOffButton* mBypassKnob;
 			CKnob* mGainKnob;
+			CParamDisplay* mGainDisplay;
+			CParamDisplay* mGainReductionDisplay;
 		};
 
 	} // namespace Vst
