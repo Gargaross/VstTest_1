@@ -276,7 +276,7 @@
     <ResourceCompile Include="resource\PhatGainz.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resource\GainKnob.png" />
+    <Image Include="resource\knob_big.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

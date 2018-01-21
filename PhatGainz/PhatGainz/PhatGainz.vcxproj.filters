@@ -245,7 +245,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resource\GainKnob.png">
+    <Image Include="resource\knob_big.png">
       <Filter>Resource</Filter>
     </Image>
   </ItemGroup>
