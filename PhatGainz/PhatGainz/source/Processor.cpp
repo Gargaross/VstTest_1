@@ -81,7 +81,7 @@ namespace Vst {
 					}
 					if (id == kGainId) {
 						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue) {
-							fGain = value;
+							fGain = value*2;
 						}
 					}
 				}

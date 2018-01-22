@@ -3,7 +3,7 @@
 
 bool DbReductionFunction(float value, std::string& result, CParamDisplay* display)
 {
-	float dbReduction = 10 * std::log10(pow(value, 2));
+	float dbReduction = 10 * std::log10(pow(value*2, 2));
 	result = std::to_string(dbReduction);
 
 	return true;
