@@ -36,7 +36,6 @@ namespace Steinberg {
 			CBitmap* gainKnobImg = new CBitmap("knob_big.png");
 			CRect r(0, 0, gainKnobImg->getWidth(), 82);
 			r.offset(100, 200);
-			mGainKnob = new CKnob(r, this, kGainId, gainKnobImg, gainKnobImg, CPoint(0, 0), CKnob::kHandleCircleDrawing);
 			mGainKnob = new CAnimKnob(r, this, kGainId, 80, 84, gainKnobImg, CPoint(0, 0));
 
 			//background->forget();
@@ -59,6 +58,7 @@ namespace Steinberg {
 			if ((tag == kBypassId) || (tag == kGainId)) {
 				controller->beginEdit(tag);
 				controller->performEdit(tag, pControl->getValueNormalized());
+				//DebugPrint(pControl->getValueNormalized());
 				controller->endEdit(tag);
 			}
 		}
