@@ -34,6 +34,17 @@ namespace Vst {
 #endif
 						setParamNormalized(kBypassId, bypassState ? 1 : 0);
 				}
+
+				// read the gain
+				int32 gainState;
+				if (state->read(&gainState, sizeof(gainState)) == kResultTrue)
+				{
+#if BYTEORDER == kBigEndian
+					SWAP_32(gainState)
+#endif
+						setParamNormalized(kGainId, gainState);
+
+				}
 			}
 
 			return kResultOk;
@@ -52,6 +63,17 @@ namespace Vst {
 #endif
 					setParamNormalized(kBypassId, bypassState ? 1 : 0);
 				}
+
+				// read the gain
+				int32 gainState;
+				if (state->read(&gainState, sizeof(gainState)) == kResultTrue)
+				{
+#if BYTEORDER == kBigEndian
+					SWAP_32(gainState)
+#endif
+						setParamNormalized(kGainId, gainState);
+
+				}
 			}
 
 			return kResultOk;
@@ -60,13 +82,16 @@ namespace Vst {
 		tresult PLUGIN_API Controller::getState(IBStream* state)
 		{
 			int32 bypassState = getParamNormalized(kBypassId);
+			int32 gainState = getParamNormalized(kGainId);
 
 #if BYTEORDER == kBigEndian
 				SWAP_32(bypassState)
+				SWAP_32(gainState)
 #endif
 			state->write(&bypassState, sizeof(bypassState));
+			state->write(&gainState, sizeof(gainState));
 
-				return kResultTrue;
+			return kResultTrue;
 		}
 
 		tresult PLUGIN_API Controller::setParamNormalized(ParamID tag, ParamValue value)

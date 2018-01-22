@@ -24,6 +24,7 @@ public:
 
 protected:
 	bool mBypass;
+	float fGain;
 };
 
 } // namespace Vst
