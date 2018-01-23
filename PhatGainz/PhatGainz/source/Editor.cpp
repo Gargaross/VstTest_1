@@ -67,6 +67,7 @@ namespace Steinberg {
 			if (tag == kBypassId) {
 				controller->beginEdit(tag);
 				controller->performEdit(tag, pControl->getValueNormalized());
+				//DebugPrint(pControl->getValueNormalized());
 				controller->endEdit(tag);
 			}
 			if (tag == kGainId) {
