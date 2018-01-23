@@ -5,6 +5,11 @@
 namespace Steinberg {
 	namespace Vst {
 
+		class DbReductionDisplay : public CParamDisplay
+		{
+
+		};
+
 		class Editor : public VSTGUIEditor,
 						public IControlListener
 		{
