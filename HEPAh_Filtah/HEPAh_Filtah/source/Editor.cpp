@@ -23,9 +23,28 @@ namespace Steinberg {
 			CRect frameSize(0, 0, 400, 400);
 			frame = new CFrame(frameSize, this);
 			frame->open(parent);
-
 			frame->setBackgroundColor(kWhiteCColor);
 
+			// TODO
+			// choice for filter type (lowpass, highpass etc.)
+			// choice of filter implementation (butterworth, chebyshev etc.)
+			// Frequency / center frequency / corner frequency. The frequency to "act" upon
+			// dBGain - only for peaking and shelving filters
+			// Q value
+
+			CRect fr(0, 0, 200, 100);
+			COptionMenu* optionMenu = new COptionMenu(fr, this, kFilterTypeId);
+			optionMenu->addEntry("foo");
+			optionMenu->addEntry("bar");
+			optionMenu->addEntry("asdfasdfasdfasdfasdfasdf");
+
+			frame->addView(optionMenu);
+
+			//CBitmap* background = new CBitmap("background.png");
+			//CView* backgroundView = new CView(CRect(0, 0, background->getWidth(), background->getHeight()));
+			//backgroundView->setBackground(background);
+
+			/*
 			CBitmap* gainKnobImg = new CBitmap("knob_big.png");
 			CRect r(0, 0, gainKnobImg->getWidth(), 84);
 			r.offset(100, 200);
@@ -52,6 +71,7 @@ namespace Steinberg {
 				gainParam->addRef();
 				gainParam->addDependent(this);
 			}
+			*/
 
 			return true;
 		}
@@ -69,7 +89,7 @@ namespace Steinberg {
 				controller->performEdit(tag, pControl->getValueNormalized());
 				controller->endEdit(tag);
 			}
-			if (tag == kGainId) {
+			/*if (tag == kGainId) {
 				float valueNorm = pControl->getValueNormalized();
 
 				controller->beginEdit(tag);
@@ -77,7 +97,7 @@ namespace Steinberg {
 				mGainDisplay->setValueNormalized(valueNorm);
 				mGainReductionDisplay->setValueNormalized(valueNorm);
 				controller->endEdit(tag);
-			}
+			}*/
 		}
 
 		void PLUGIN_API Editor::update(FUnknown* changedUnknown, Steinberg::int32 message)
@@ -85,8 +105,9 @@ namespace Steinberg {
 			if (message == IDependent::kChanged)
 			{
 				if (Parameter* p = dynamic_cast<Parameter*>(changedUnknown)) {
-					mGainKnob->setValueNormalized(controller->getParamNormalized(kGainId));
-					mGainDisplay->setValueNormalized(controller->getParamNormalized(kGainId));
+					//mBypassKnob->setValueNormalized(controller->getParamNormalized(kBypassId));
+					//mGainKnob->setValueNormalized(controller->getParamNormalized(kGainId));
+					//mGainDisplay->setValueNormalized(controller->getParamNormalized(kGainId));
 				}
 			}
 		}
