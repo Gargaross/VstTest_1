@@ -11,8 +11,18 @@ namespace Steinberg {
 namespace Vst {
 	Processor::Processor() : 
 		mBypass(false),
-		fGain(0.0)
+		fGain(0.0),
+		z1L(0),
+		z2L(0),
+		z1R(0),
+		z2R(0)
 	{
+		a0 = 0.0012074046354035072;
+		a1 = 0.0024148092708070144;
+		a2 = 0.0012074046354035072;
+		b1 = -1.8993325472756315;
+		b2 = 0.9041621658172454;
+
 		setControllerClass(HEPAhFiltahControllerUID);
 	}
 
@@ -101,12 +111,54 @@ namespace Vst {
 				float* inputChannel = data.inputs[0].channelBuffers32[channel];
 
 				for (int32 sample = 0; sample < data.numSamples; sample++) {
-					if (mBypass)
+					/*
+					if (mBypass) {
 						outputChannel[sample] = inputChannel[sample];
-					else
-						outputChannel[sample] = 0;
+					}
+					else {
+					*/
+						// TODO implement LPF here
+						// y[n] = a0*x[n] + a1*x[n-1] + a2*x[n-2] – b1*y[n-1] – b2*y[n-2]
+						// y[n] = outputChannel
 
-					outputChannel[sample] = inputChannel[sample]*fGain;
+						// Transposed direct form 2
+						// y[n] = a0*x[n] + z1
+						// z1 = a1 * x[n] + z2 - b1 * y[n]
+						// z2 = a2 * x[n] - b2 * y[n]
+
+					
+
+					double in = inputChannel[sample];
+					double z1, z2;
+
+					if (in != 0) {
+						z1 = z1;
+					}
+
+					if (channel == 0) {
+						z1 = z1L;
+						z2 = z2L;
+					}
+					else {
+						z1 = z2R;
+						z2 = z2R;
+					}
+					
+					outputChannel[sample] = a0 * in + z1;
+					z1 = a1 * in + z2 - b1 * outputChannel[sample];
+					z2 = a2 * in - b2 * outputChannel[sample];
+
+					if (channel == 0) {
+						z1L = z1;
+						z2L = z2;
+					}
+					else {
+						z1R = z1;
+						z2R = z2;
+					}
+					//}
+
+					//outputChannel[sample] = inputChannel[sample]*fGain;
 				}
 			}
 		}

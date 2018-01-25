@@ -25,6 +25,17 @@ public:
 protected:
 	bool mBypass;
 	float fGain;
+
+	// LPF filter constants
+	double a0;
+	double a1;
+	double a2;
+	double b1;
+	double b2;
+	double z1L;
+	double z2L;
+	double z1R;
+	double z2R;
 };
 
 } // namespace Vst
