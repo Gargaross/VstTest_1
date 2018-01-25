@@ -23,6 +23,11 @@ namespace Vst {
 		b1 = -1.8993325472756315;
 		b2 = 0.9041621658172454;
 
+		for (int i = 0; i < 2; i++) {
+			z1[i] = 0;
+			z2[i] = 0;
+		}
+
 		setControllerClass(HEPAhFiltahControllerUID);
 	}
 
@@ -111,54 +116,21 @@ namespace Vst {
 				float* inputChannel = data.inputs[0].channelBuffers32[channel];
 
 				for (int32 sample = 0; sample < data.numSamples; sample++) {
-					/*
-					if (mBypass) {
-						outputChannel[sample] = inputChannel[sample];
-					}
-					else {
-					*/
-						// TODO implement LPF here
-						// y[n] = a0*x[n] + a1*x[n-1] + a2*x[n-2] – b1*y[n-1] – b2*y[n-2]
-						// y[n] = outputChannel
+					// TODO implement LPF here
+					// y[n] = a0*x[n] + a1*x[n-1] + a2*x[n-2] – b1*y[n-1] – b2*y[n-2]
+					// y[n] = outputChannel
 
-						// Transposed direct form 2
-						// y[n] = a0*x[n] + z1
-						// z1 = a1 * x[n] + z2 - b1 * y[n]
-						// z2 = a2 * x[n] - b2 * y[n]
-
-					
+					// Transposed direct form 2
+					// y[n] = a0*x[n] + z1
+					// z1 = a1 * x[n] + z2 - b1 * y[n]
+					// z2 = a2 * x[n] - b2 * y[n]
 
 					double in = inputChannel[sample];
-					double z1, z2;
 
-					if (in != 0) {
-						z1 = z1;
-					}
+					outputChannel[sample] = a0 * in + z1[channel];
+					z1[channel] = a1 * in + z2[channel] - b1 * outputChannel[sample];
+					z2[channel] = a2 * in - b2 * outputChannel[sample];
 
-					if (channel == 0) {
-						z1 = z1L;
-						z2 = z2L;
-					}
-					else {
-						z1 = z2R;
-						z2 = z2R;
-					}
-					
-					outputChannel[sample] = a0 * in + z1;
-					z1 = a1 * in + z2 - b1 * outputChannel[sample];
-					z2 = a2 * in - b2 * outputChannel[sample];
-
-					if (channel == 0) {
-						z1L = z1;
-						z2L = z2;
-					}
-					else {
-						z1R = z1;
-						z2R = z2;
-					}
-					//}
-
-					//outputChannel[sample] = inputChannel[sample]*fGain;
 				}
 			}
 		}

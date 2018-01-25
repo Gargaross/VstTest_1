@@ -32,6 +32,8 @@ protected:
 	double a2;
 	double b1;
 	double b2;
+	double z1[2];
+	double z2[2];
 	double z1L;
 	double z2L;
 	double z1R;
