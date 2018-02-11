@@ -275,6 +275,10 @@
   <ItemGroup>
     <ResourceCompile Include="resource\HEPAhFiltah.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="resource\knob.png" />
+    <Image Include="resource\knob_big.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

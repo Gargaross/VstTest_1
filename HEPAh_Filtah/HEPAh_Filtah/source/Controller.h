@@ -7,7 +7,12 @@ namespace Steinberg {
 
 		enum {
 			kBypassId = 100,
-			kFilterTypeId
+			kFilterTypeId,
+			kCenterFreqId,
+			kQId,
+			kGainId,
+			kLowPassId,
+			kHighPassId
 		};
 
 		class Controller : public EditController

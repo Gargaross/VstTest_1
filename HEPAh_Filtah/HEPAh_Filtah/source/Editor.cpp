@@ -25,20 +25,88 @@ namespace Steinberg {
 			frame->open(parent);
 			frame->setBackgroundColor(kWhiteCColor);
 
-			// TODO
-			// choice for filter type (lowpass, highpass etc.)
-			// choice of filter implementation (butterworth, chebyshev etc.)
-			// Frequency / center frequency / corner frequency. The frequency to "act" upon
-			// dBGain - only for peaking and shelving filters
-			// Q value
+			CRect buttonRect(0, 0, 100, 20);
 
-			CRect fr(0, 0, 200, 100);
-			COptionMenu* optionMenu = new COptionMenu(fr, this, kFilterTypeId);
-			optionMenu->addEntry("foo");
-			optionMenu->addEntry("bar");
-			optionMenu->addEntry("asdfasdfasdfasdfasdfasdf");
+			buttonRect.offset(10, 50);
+			CTextButton* textButton = new CTextButton(buttonRect, this, kLowPassId, "Low pass");
 
-			frame->addView(optionMenu);
+			buttonRect.offset(0, 20);
+			CTextButton* textButton2 = new CTextButton(buttonRect, this, kHighPassId, "High pass");
+
+			// center freq knob
+			CBitmap* knobImg = new CBitmap("knob.png");
+			CRect r(0, 0, knobImg->getWidth(), 42);
+
+			r.offset(121, 50);
+			mCenterFreqKnob = new CAnimKnob(r, this, kCenterFreqId, 80, 42, knobImg, CPoint(0, 0));
+
+			// q knob
+			r.offset(42, 0);
+			mQKnob = new CAnimKnob(r, this, kQId, 80, 42, knobImg, CPoint(0, 0));
+
+			// gain knob
+			r.offset(42, 0);
+			mGainKnob = new CAnimKnob(r, this, kGainId, 80, 42, knobImg, CPoint(0, 0));
+
+			CRect displayRect(0, 0, 80, 40);
+			displayRect.offset(0, 100);
+			mFilterTypeDisplay = new CParamDisplay(displayRect);
+
+			displayRect.offset(85, 0);
+			mCenterFreqDisplay = new CParamDisplay(displayRect);
+
+			displayRect.offset(85, 0);
+			mQDisplay = new CParamDisplay(displayRect);
+
+			displayRect.offset(85, 0);
+			mGainDisplay = new CParamDisplay(displayRect);
+
+			// Labels
+			CRect labelRect(0, 0, 80, 20);
+			labelRect.offset(0, 140);
+			CTextLabel* filterTypeLabel = new CTextLabel(labelRect, "Filter Type");
+
+			labelRect.offset(85, 0);
+			CTextLabel* centerFreqLabel = new CTextLabel(labelRect, "Frequency");
+
+			labelRect.offset(85, 0);
+			CTextLabel* QLabel = new CTextLabel(labelRect, "Q");
+
+			labelRect.offset(85, 0);
+			CTextLabel* gainLabel = new CTextLabel(labelRect, "Gain");
+
+			knobImg->forget();
+
+			frame->addView(textButton);
+			frame->addView(textButton2);
+			frame->addView(mCenterFreqKnob);
+			frame->addView(mQKnob);
+			frame->addView(mGainKnob);
+			frame->addView(mFilterTypeDisplay);
+			frame->addView(mCenterFreqDisplay);
+			frame->addView(mQDisplay);
+			frame->addView(mGainDisplay);
+			frame->addView(filterTypeLabel);
+			frame->addView(centerFreqLabel);
+			frame->addView(QLabel);
+			frame->addView(gainLabel);
+
+			Parameter* centerFreqParam = controller->getParameterObject(kCenterFreqId);
+			Parameter* qParam = controller->getParameterObject(kQId);
+			Parameter* gainParam = controller->getParameterObject(kGainId);
+
+			if (centerFreqParam) {
+				centerFreqParam->addRef();
+				centerFreqParam->addDependent(this);
+			}
+			if (qParam) {
+				qParam->addRef();
+				qParam->addDependent(this);
+			}
+			if (gainParam) {
+				gainParam->addRef();
+				gainParam->addDependent(this);
+			}
 
 			//CBitmap* background = new CBitmap("background.png");
 			//CView* backgroundView = new CView(CRect(0, 0, background->getWidth(), background->getHeight()));
@@ -89,15 +157,36 @@ namespace Steinberg {
 				controller->performEdit(tag, pControl->getValueNormalized());
 				controller->endEdit(tag);
 			}
-			/*if (tag == kGainId) {
-				float valueNorm = pControl->getValueNormalized();
-
+			if (tag == kLowPassId) {
+				controller->beginEdit(kFilterTypeId);
+				controller->performEdit(kFilterTypeId, 0.0);
+				mFilterTypeDisplay->setValueNormalized(0.0);
+				controller->endEdit(kFilterTypeId);
+			}
+			if (tag == kHighPassId) {
+				controller->beginEdit(kFilterTypeId);
+				controller->performEdit(kFilterTypeId, 1.0);
+				mFilterTypeDisplay->setValueNormalized(1.0);
+				controller->endEdit(kFilterTypeId);
+			}
+			if (tag == kCenterFreqId) {
 				controller->beginEdit(tag);
-				controller->performEdit(tag, valueNorm);
-				mGainDisplay->setValueNormalized(valueNorm);
-				mGainReductionDisplay->setValueNormalized(valueNorm);
+				controller->performEdit(tag, pControl->getValueNormalized());
+				mCenterFreqDisplay->setValueNormalized(pControl->getValueNormalized());
 				controller->endEdit(tag);
-			}*/
+			}
+			if (tag == kQId) {
+				controller->beginEdit(tag);
+				controller->performEdit(tag, pControl->getValueNormalized());
+				mQDisplay->setValueNormalized(pControl->getValueNormalized());
+				controller->endEdit(tag);
+			}
+			if (tag == kGainId) {
+				controller->beginEdit(tag);
+				controller->performEdit(tag, pControl->getValueNormalized());
+				mGainDisplay->setValueNormalized(pControl->getValueNormalized());
+				controller->endEdit(tag);
+			}
 		}
 
 		void PLUGIN_API Editor::update(FUnknown* changedUnknown, Steinberg::int32 message)

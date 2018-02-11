@@ -244,4 +244,12 @@
       <Filter>Resource</Filter>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="resource\knob_big.png">
+      <Filter>Resource</Filter>
+    </Image>
+    <Image Include="resource\knob.png">
+      <Filter>Resource</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

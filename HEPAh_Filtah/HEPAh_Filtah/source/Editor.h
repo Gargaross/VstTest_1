@@ -25,10 +25,13 @@ namespace Steinberg {
 			void PLUGIN_API update(FUnknown* sender, int32 value) SMTG_OVERRIDE;
 
 		private:
-			COnOffButton* mBypassKnob;
-			CKnob* mGainKnob;
+			CAnimKnob* mCenterFreqKnob;
+			CAnimKnob* mQKnob;
+			CAnimKnob* mGainKnob;
+			CParamDisplay* mFilterTypeDisplay;
+			CParamDisplay* mCenterFreqDisplay;
+			CParamDisplay* mQDisplay;
 			CParamDisplay* mGainDisplay;
-			CParamDisplay* mGainReductionDisplay;
 		};
 
 	} // namespace Vst

@@ -23,19 +23,21 @@ public:
 	static FUnknown* createInstance(void*) { return (IAudioProcessor*)new Processor(); }
 
 protected:
-	bool mBypass;
-	float fGain;
-
-	// LPF filter constants
+	// Filter constants
 	double a0;
 	double a1;
 	double a2;
 	double b1;
 	double b2;
-	double z1L;
-	double z2L;
-	double z1R;
-	double z2R;
+
+	double z1[2];
+	double z2[2];
+
+	bool fBypass;
+	float mFilterType;
+	float mFrequency;
+	float mQValue;
+	float mGain;
 };
 
 } // namespace Vst

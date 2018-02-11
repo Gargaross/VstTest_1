@@ -11,17 +11,18 @@ namespace Steinberg {
 namespace Vst {
 	Processor::Processor() : 
 		mBypass(false),
-		fGain(0.0),
-		z1L(0),
-		z2L(0),
-		z1R(0),
-		z2R(0)
+		fGain(0.0)
 	{
 		a0 = 0.0012074046354035072;
 		a1 = 0.0024148092708070144;
 		a2 = 0.0012074046354035072;
 		b1 = -1.8993325472756315;
 		b2 = 0.9041621658172454;
+
+		for (int i = 0; i < 2; i++) {
+			z1[i] = 0;
+			z2[i] = 0;
+		}
 
 		setControllerClass(HEPAhFiltahControllerUID);
 	}
@@ -74,6 +75,8 @@ namespace Vst {
 	{
 		if (data.inputParameterChanges)
 		{
+			bool recalcFilterConstants = false;
+
 			int32 numParams = data.inputParameterChanges->getParameterCount();
 			for (int32 index = 0; index < numParams; index++) {
 				IParamValueQueue* paramQueue = data.inputParameterChanges->getParameterData(index);
@@ -84,9 +87,42 @@ namespace Vst {
 					
 					uint32 id = paramQueue->getParameterId();
 
+					/*
 					if (id == kBypassId) {
 						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue) {
 							mBypass = (value > 0.5f);
+						}
+					}
+					*/
+					if (id == kFilterTypeId) {
+						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value)) {
+							if (value < 0.5f)
+								mFilterType = 0.0;
+							else
+								mFilterType = 1.0;
+
+							recalcFilterConstants = true;
+						}
+					}
+					if (id == kCenterFreqId) {
+						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value)) {
+							mFrequency = value;
+
+							recalcFilterConstants = true;
+						}
+					}
+					if (id == kQId) {
+						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value)) {
+							mQValue = value;
+
+							recalcFilterConstants = true;
+						}
+					}
+					if (id == kGainId) {
+						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value)) {
+							mGain = value;
+
+							recalcFilterConstants = true;
 						}
 					}
 					/*if (id == kGainId) {
@@ -95,6 +131,12 @@ namespace Vst {
 						}
 					}*/
 				}
+			}
+
+			if (recalcFilterConstants) {
+				// Recalc filter constants here
+
+				// Maybe reset Z values?
 			}
 		}
 
@@ -126,39 +168,11 @@ namespace Vst {
 						// z1 = a1 * x[n] + z2 - b1 * y[n]
 						// z2 = a2 * x[n] - b2 * y[n]
 
-					
-
 					double in = inputChannel[sample];
-					double z1, z2;
-
-					if (in != 0) {
-						z1 = z1;
-					}
-
-					if (channel == 0) {
-						z1 = z1L;
-						z2 = z2L;
-					}
-					else {
-						z1 = z2R;
-						z2 = z2R;
-					}
 					
-					outputChannel[sample] = a0 * in + z1;
-					z1 = a1 * in + z2 - b1 * outputChannel[sample];
-					z2 = a2 * in - b2 * outputChannel[sample];
-
-					if (channel == 0) {
-						z1L = z1;
-						z2L = z2;
-					}
-					else {
-						z1R = z1;
-						z2R = z2;
-					}
-					//}
-
-					//outputChannel[sample] = inputChannel[sample]*fGain;
+					outputChannel[sample] = a0 * in + z1[channel];
+					z1[channel] = a1 * in + z2[channel] - b1 * outputChannel[sample];
+					z2[channel] = a2 * in - b2 * outputChannel[sample];
 				}
 			}
 		}

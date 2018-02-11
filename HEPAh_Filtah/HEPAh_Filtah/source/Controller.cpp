@@ -14,7 +14,10 @@ namespace Vst {
 			if (result == kResultTrue)
 			{
 				parameters.addParameter(STR16("Bypass"), 0, 1, 0, ParameterInfo::kCanAutomate | ParameterInfo::kIsBypass, kBypassId);
-				//parameters.addParameter(STR16("Gain"), 0, 0, 0, ParameterInfo::kCanAutomate, kGainId);
+				parameters.addParameter(STR16("Filter Type"), 0, 1, 0, ParameterInfo::kCanAutomate, kFilterTypeId);
+				parameters.addParameter(STR16("Center Frequency"), 0, 0, 0, ParameterInfo::kCanAutomate, kCenterFreqId);
+				parameters.addParameter(STR16("Q Value"), 0, 0, 0, ParameterInfo::kCanAutomate, kQId);
+				parameters.addParameter(STR16("Gain"), 0, 0, 0, ParameterInfo::kCanAutomate, kGainId);
 			}
 			return kResultTrue;
 		}
