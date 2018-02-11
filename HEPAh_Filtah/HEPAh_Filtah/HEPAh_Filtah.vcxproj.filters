@@ -85,6 +85,9 @@
     <ClCompile Include="source\HEPAhFiltah.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="source\Common.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\vst3sdk\base\source\classfactoryhelpers.h">
@@ -220,6 +223,9 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="source\HEPAhFiltah.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Common.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,22 +2,29 @@
 #include "Processor.h"
 #include "Controller.h"
 #include "HEPAhFiltah.h"
+#include "Common.h"
 #include "pluginterfaces/base/ibstream.h"
 #include "pluginterfaces/vst/ivstparameterchanges.h"
 
 #include "vstgui4\vstgui\lib\vstguidebug.h"
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 namespace Steinberg {
 namespace Vst {
 	Processor::Processor() : 
 		mBypass(false),
-		fGain(0.0)
+		mFilterType(0.0),
+		mFrequencyNormalized(0.0),
+		mQValueNormalized(0.0),
+		mGain(0.0)
 	{
-		a0 = 0.0012074046354035072;
-		a1 = 0.0024148092708070144;
-		a2 = 0.0012074046354035072;
-		b1 = -1.8993325472756315;
-		b2 = 0.9041621658172454;
+		b0 = 0.0012074046354035072;
+		b1 = 0.0024148092708070144;
+		b2 = 0.0012074046354035072;
+		a1 = -1.8993325472756315;
+		a2 = 0.9041621658172454;
 
 		for (int i = 0; i < 2; i++) {
 			z1[i] = 0;
@@ -97,22 +104,24 @@ namespace Vst {
 					if (id == kFilterTypeId) {
 						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value)) {
 							if (value < 0.5f)
-								mFilterType = 0.0;
+								mFilterType = 0.0; // LPF
 							else
-								mFilterType = 1.0;
+								mFilterType = 1.0; // HPF
 
 							recalcFilterConstants = true;
 						}
 					}
 					if (id == kCenterFreqId) {
-						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value)) {
-							mFrequency = value;
+						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue) {
+							mFrequencyNormalized = value;
+							mFrequency = NormalizedFrequencyToFrequency(mFrequencyNormalized);
 
 							recalcFilterConstants = true;
 						}
 					}
 					if (id == kQId) {
 						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value)) {
+							mQValueNormalized = value;
 							mQValue = value;
 
 							recalcFilterConstants = true;
@@ -135,6 +144,25 @@ namespace Vst {
 
 			if (recalcFilterConstants) {
 				// Recalc filter constants here
+				// TODO support more than one sample rate frequency
+				double w0 = 2 * M_PI * mFrequency / 44100.0;
+				double cosW0 = std::sin(w0);
+				double sinW0 = std::cos(w0);
+				double alpha = sinW0 / (2 * mQValue);
+
+				// TODO This is the LPF calculations
+				b0 = ((1 - cosW0) / 2);
+				b1 = (1 - cosW0);
+				b2 = ((1 - cosW0) / 2);
+				a1 = (-2 * cosW0);
+				a2 = (1 - alpha);
+				
+				double alphaPlusOne = (1 + alpha);
+				b0 = b0 * alphaPlusOne;
+				b1 = b1 * alphaPlusOne;
+				b2 = b2 * alphaPlusOne;
+				a1 = a1 * alphaPlusOne;
+				a2 = a2 * alphaPlusOne;
 
 				// Maybe reset Z values?
 			}
@@ -159,20 +187,12 @@ namespace Vst {
 					}
 					else {
 					*/
-						// TODO implement LPF here
-						// y[n] = a0*x[n] + a1*x[n-1] + a2*x[n-2] – b1*y[n-1] – b2*y[n-2]
-						// y[n] = outputChannel
-
-						// Transposed direct form 2
-						// y[n] = a0*x[n] + z1
-						// z1 = a1 * x[n] + z2 - b1 * y[n]
-						// z2 = a2 * x[n] - b2 * y[n]
 
 					double in = inputChannel[sample];
 					
-					outputChannel[sample] = a0 * in + z1[channel];
-					z1[channel] = a1 * in + z2[channel] - b1 * outputChannel[sample];
-					z2[channel] = a2 * in - b2 * outputChannel[sample];
+					outputChannel[sample] = b0 * in + z1[channel];
+					z1[channel] = b1 * in + z2[channel] - a1 * outputChannel[sample];
+					z2[channel] = b2 * in - a2 * outputChannel[sample];
 				}
 			}
 		}
@@ -204,7 +224,7 @@ namespace Vst {
 #endif
 
 		mBypass = savedBypass > 0;
-		fGain = savedGain;
+		mGain = savedGain;
 
 		return kResultTrue;
 	}
@@ -216,7 +236,7 @@ namespace Vst {
 		// here we need to save the model
 
 		int32 toSaveBypass = mBypass ? 1 : 0;
-		int32 toSavedGain = fGain;
+		int32 toSavedGain = mGain;
 
 #if BYTEORDER == kBigEndian
 			SWAP_32(toSaveBypass)

@@ -24,20 +24,23 @@ public:
 
 protected:
 	// Filter constants
-	double a0;
 	double a1;
 	double a2;
+	double b0;
 	double b1;
 	double b2;
 
 	double z1[2];
 	double z2[2];
 
-	bool fBypass;
+	bool mBypass;
 	float mFilterType;
-	float mFrequency;
-	float mQValue;
+	float mFrequencyNormalized;
+	float mQValueNormalized;
 	float mGain;
+
+	double mFrequency;
+	double mQValue;
 };
 
 } // namespace Vst

@@ -217,6 +217,7 @@
     <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\plugin-bindings\vst3editor.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_uidescription_win32.cpp" />
     <ClCompile Include="..\..\..\vst3sdk\vstgui4\vstgui\vstgui_win32.cpp" />
+    <ClCompile Include="source\Common.cpp" />
     <ClCompile Include="source\Controller.cpp" />
     <ClCompile Include="source\Editor.cpp" />
     <ClCompile Include="source\HEPAhFiltah.cpp" />
@@ -264,6 +265,7 @@
     <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\common\pluginview.h" />
     <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\main\pluginfactoryvst3.h" />
     <ClInclude Include="..\..\..\vst3sdk\public.sdk\source\vst\vstguieditor.h" />
+    <ClInclude Include="source\Common.h" />
     <ClInclude Include="source\Controller.h" />
     <ClInclude Include="source\Editor.h" />
     <ClInclude Include="source\HEPAhFiltah.h" />
