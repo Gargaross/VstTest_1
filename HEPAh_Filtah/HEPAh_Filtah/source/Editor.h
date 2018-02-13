@@ -28,6 +28,10 @@ namespace Steinberg {
 			CAnimKnob* mCenterFreqKnob;
 			CAnimKnob* mQKnob;
 			CAnimKnob* mGainKnob;
+			CParamDisplay* mFilterTypeNormDisplay;
+			CParamDisplay* mCenterFreqNormDisplay;
+			CParamDisplay* mQNormDisplay;
+			CParamDisplay* mGainNormDisplay;
 			CParamDisplay* mFilterTypeDisplay;
 			CParamDisplay* mCenterFreqDisplay;
 			CParamDisplay* mQDisplay;

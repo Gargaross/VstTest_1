@@ -94,13 +94,6 @@ namespace Vst {
 					
 					uint32 id = paramQueue->getParameterId();
 
-					/*
-					if (id == kBypassId) {
-						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue) {
-							mBypass = (value > 0.5f);
-						}
-					}
-					*/
 					if (id == kFilterTypeId) {
 						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value)) {
 							if (value < 0.5f)
@@ -120,9 +113,9 @@ namespace Vst {
 						}
 					}
 					if (id == kQId) {
-						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value)) {
+						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue) {
 							mQValueNormalized = value;
-							mQValue = value;
+							mQValue = NormalizedQToQ(mQValueNormalized);
 
 							recalcFilterConstants = true;
 						}
@@ -134,35 +127,20 @@ namespace Vst {
 							recalcFilterConstants = true;
 						}
 					}
-					/*if (id == kGainId) {
-						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue) {
-							fGain = value;
-						}
-					}*/
 				}
 			}
 
 			if (recalcFilterConstants) {
 				// Recalc filter constants here
 				// TODO support more than one sample rate frequency
-				double w0 = 2 * M_PI * mFrequency / 44100.0;
-				double cosW0 = std::sin(w0);
-				double sinW0 = std::cos(w0);
-				double alpha = sinW0 / (2 * mQValue);
-
 				// TODO This is the LPF calculations
-				b0 = ((1 - cosW0) / 2);
-				b1 = (1 - cosW0);
-				b2 = ((1 - cosW0) / 2);
-				a1 = (-2 * cosW0);
-				a2 = (1 - alpha);
-				
-				double alphaPlusOne = (1 + alpha);
-				b0 = b0 * alphaPlusOne;
-				b1 = b1 * alphaPlusOne;
-				b2 = b2 * alphaPlusOne;
-				a1 = a1 * alphaPlusOne;
-				a2 = a2 * alphaPlusOne;
+				double K = tan(M_PI * mFrequency / 44100.0);
+				double norm = 1 / (1 + K / mQValue + K * K);
+				b0 = K * K * norm;
+				b1 = 2 * b0;
+				b2 = b0;
+				a1 = 2 * (K * K - 1) * norm;
+				a2 = (1 - K / mQValue + K * K) * norm;
 
 				// Maybe reset Z values?
 			}

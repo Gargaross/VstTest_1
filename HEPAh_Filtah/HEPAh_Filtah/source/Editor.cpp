@@ -1,13 +1,44 @@
 #include "Editor.h"
 #include "Controller.h"
+#include "Common.h"
 
-bool DbReductionFunction(float value, std::string& result, CParamDisplay* display)
+bool FilterTypeToString(float value, std::string& result, CParamDisplay* display)
 {
-	float dbReduction = 10 * std::log10(pow(value, 2));
-	result = std::to_string(dbReduction);
+	if (value == 0.0) {
+		result = "Low Pass";
+	}
+	else {
+		result = "High Pass";
+	}
 
 	return true;
 }
+
+
+bool CenterFreqToString(float value, std::string& result, CParamDisplay* display)
+{
+	double freq = NormalizedFrequencyToFrequency(value);
+	result = std::to_string(freq);
+
+	return true;
+}
+
+
+bool QToString(float value, std::string& result, CParamDisplay* display)
+{
+	double q = NormalizedQToQ(value);
+	result = std::to_string(q);
+
+	return true;
+}
+
+
+bool GainToString(float value, std::string& result, CParamDisplay* display)
+{
+	result = "TODO";
+	return true;
+}
+
 
 namespace Steinberg {
 	namespace Vst {
@@ -50,20 +81,34 @@ namespace Steinberg {
 
 			CRect displayRect(0, 0, 80, 40);
 			displayRect.offset(0, 100);
+			mFilterTypeNormDisplay = new CParamDisplay(displayRect);
+			displayRect.offset(0, 40);
 			mFilterTypeDisplay = new CParamDisplay(displayRect);
 
-			displayRect.offset(85, 0);
+			displayRect.offset(85, -40);
+			mCenterFreqNormDisplay = new CParamDisplay(displayRect);
+			displayRect.offset(0, 40);
 			mCenterFreqDisplay = new CParamDisplay(displayRect);
 
-			displayRect.offset(85, 0);
+			displayRect.offset(85, -40);
+			mQNormDisplay = new CParamDisplay(displayRect);
+			displayRect.offset(0, 40);
 			mQDisplay = new CParamDisplay(displayRect);
 
-			displayRect.offset(85, 0);
+			displayRect.offset(85, -40);
+			mGainNormDisplay = new CParamDisplay(displayRect);
+			displayRect.offset(0, 40);
 			mGainDisplay = new CParamDisplay(displayRect);
+
+			mFilterTypeDisplay->setValueToStringFunction2(FilterTypeToString);
+			mCenterFreqDisplay->setValueToStringFunction2(CenterFreqToString);
+			mQDisplay->setValueToStringFunction2(QToString);
+			mGainDisplay->setValueToStringFunction2(GainToString);
+
 
 			// Labels
 			CRect labelRect(0, 0, 80, 20);
-			labelRect.offset(0, 140);
+			labelRect.offset(0, 180);
 			CTextLabel* filterTypeLabel = new CTextLabel(labelRect, "Filter Type");
 
 			labelRect.offset(85, 0);
@@ -82,6 +127,10 @@ namespace Steinberg {
 			frame->addView(mCenterFreqKnob);
 			frame->addView(mQKnob);
 			frame->addView(mGainKnob);
+			frame->addView(mFilterTypeNormDisplay);
+			frame->addView(mCenterFreqNormDisplay);
+			frame->addView(mQNormDisplay);
+			frame->addView(mGainNormDisplay);
 			frame->addView(mFilterTypeDisplay);
 			frame->addView(mCenterFreqDisplay);
 			frame->addView(mQDisplay);
@@ -160,30 +209,35 @@ namespace Steinberg {
 			if (tag == kLowPassId) {
 				controller->beginEdit(kFilterTypeId);
 				controller->performEdit(kFilterTypeId, 0.0);
+				mFilterTypeNormDisplay->setValueNormalized(0.0);
 				mFilterTypeDisplay->setValueNormalized(0.0);
 				controller->endEdit(kFilterTypeId);
 			}
 			if (tag == kHighPassId) {
 				controller->beginEdit(kFilterTypeId);
 				controller->performEdit(kFilterTypeId, 1.0);
+				mFilterTypeNormDisplay->setValueNormalized(1.0);
 				mFilterTypeDisplay->setValueNormalized(1.0);
 				controller->endEdit(kFilterTypeId);
 			}
 			if (tag == kCenterFreqId) {
 				controller->beginEdit(tag);
 				controller->performEdit(tag, pControl->getValueNormalized());
+				mCenterFreqNormDisplay->setValueNormalized(pControl->getValueNormalized());
 				mCenterFreqDisplay->setValueNormalized(pControl->getValueNormalized());
 				controller->endEdit(tag);
 			}
 			if (tag == kQId) {
 				controller->beginEdit(tag);
 				controller->performEdit(tag, pControl->getValueNormalized());
+				mQNormDisplay->setValueNormalized(pControl->getValueNormalized());
 				mQDisplay->setValueNormalized(pControl->getValueNormalized());
 				controller->endEdit(tag);
 			}
 			if (tag == kGainId) {
 				controller->beginEdit(tag);
 				controller->performEdit(tag, pControl->getValueNormalized());
+				mGainNormDisplay->setValueNormalized(pControl->getValueNormalized());
 				mGainDisplay->setValueNormalized(pControl->getValueNormalized());
 				controller->endEdit(tag);
 			}
