@@ -220,6 +220,7 @@
     <ClCompile Include="source\Common.cpp" />
     <ClCompile Include="source\Controller.cpp" />
     <ClCompile Include="source\Editor.cpp" />
+    <ClCompile Include="source\Filter.cpp" />
     <ClCompile Include="source\LUFS Meter.cpp" />
     <ClCompile Include="source\Processor.cpp" />
   </ItemGroup>
@@ -268,6 +269,7 @@
     <ClInclude Include="source\Common.h" />
     <ClInclude Include="source\Controller.h" />
     <ClInclude Include="source\Editor.h" />
+    <ClInclude Include="source\Filter.h" />
     <ClInclude Include="source\LUFS Meter.h" />
     <ClInclude Include="source\Processor.h" />
   </ItemGroup>

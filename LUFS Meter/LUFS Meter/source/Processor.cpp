@@ -16,6 +16,8 @@ namespace Vst {
 	Processor::Processor() : 
 		mBypass(false)
 	{
+		
+
 		setControllerClass(LUFSMeterControllerUID);
 	}
 
@@ -28,6 +30,25 @@ namespace Vst {
 			addAudioInput(STR16("AudioInput"), SpeakerArr::kStereo);
 			addAudioOutput(STR16("AudioOutput"), SpeakerArr::kStereo);
 		}
+
+		for (int i = 0; i < 2; i++) {
+			z1[i] = 0;
+			z2[i] = 0;
+		}
+
+		highShelfFilter.SetConstants(
+			1.53512485958697,
+			-2.69169618940638,
+			1.19839281085285,
+			-1.69065929318241,
+			0.73248077421585);
+
+		highPassFilter.SetConstants(
+			1.0,
+			-2.0,
+			1.0,
+			-1.99004745483398,
+			0.99007225036621);
 
 		return result;
 	}
@@ -147,10 +168,23 @@ namespace Vst {
 				float* outputChannel = data.outputs[0].channelBuffers32[channel];
 				float* inputChannel = data.inputs[0].channelBuffers32[channel];
 
+				// Something is weird, right channel is distorting
+				highShelfFilter.Process(inputChannel, data.numSamples, (channel == 0) ? FilterChannel::Left : FilterChannel::Right);
+
 				for (int32 sample = 0; sample < data.numSamples; sample++) {
 					mLUFS = inputChannel[sample];
 					
+					// Bypass
 					outputChannel[sample] = inputChannel[sample];
+
+					
+					/*
+					double factorForB0 = inputChannel[sample] - a1 * z1[channel] - a2 * z2[channel];
+					outputChannel[sample] = b0 * factorForB0 + b1 * z1[channel] + b2 * z2[channel];
+
+					z2[channel] = z1[channel];
+					z1[channel] = factorForB0;
+					*/
 
 					/*
 					if (mBypass) {

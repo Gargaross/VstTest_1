@@ -64,6 +64,12 @@ namespace Steinberg {
 
 			frame->addView(mLUFSDisplay);
 
+			Parameter* luParam = controller->getParameterObject(kLUFSId);
+			if (luParam) {
+				luParam->addRef();
+				luParam->addDependent(this);
+			}
+
 			/*
 			CRect buttonRect(0, 0, 100, 20);
 
@@ -216,6 +222,12 @@ namespace Steinberg {
 				controller->performEdit(tag, pControl->getValueNormalized());
 				controller->endEdit(tag);
 			}
+			if (tag == kLUFSId) {
+				controller->beginEdit(tag);
+				float value = pControl->getValueNormalized();
+				controller->performEdit(tag, pControl->getValueNormalized());
+				controller->endEdit(tag);
+			}
 			/*
 			if (tag == kLowPassId) {
 				controller->beginEdit(kFilterTypeId);
@@ -260,9 +272,7 @@ namespace Steinberg {
 			if (message == IDependent::kChanged)
 			{
 				if (Parameter* p = dynamic_cast<Parameter*>(changedUnknown)) {
-					//mBypassKnob->setValueNormalized(controller->getParamNormalized(kBypassId));
-					//mGainKnob->setValueNormalized(controller->getParamNormalized(kGainId));
-					//mGainDisplay->setValueNormalized(controller->getParamNormalized(kGainId));
+					mLUFSDisplay->setValueNormalized(controller->getParamNormalized(kLUFSId));
 				}
 			}
 		}

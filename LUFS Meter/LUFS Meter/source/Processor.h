@@ -1,6 +1,7 @@
 #pragma once
 
 #include "public.sdk\source\vst\vstaudioeffect.h"
+#include "Filter.h"
 
 namespace Steinberg {
 namespace Vst {
@@ -28,6 +29,13 @@ protected:
 	float mGain;
 
 	float mLUFS;
+
+	double b0, b1, b2, a1, a2;
+	double z1[2];
+	double z2[2];
+
+	Filter highShelfFilter;
+	Filter highPassFilter;
 };
 
 } // namespace Vst

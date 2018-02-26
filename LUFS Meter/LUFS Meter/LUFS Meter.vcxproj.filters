@@ -78,6 +78,7 @@
     <ClCompile Include="source\Editor.cpp" />
     <ClCompile Include="source\LUFS Meter.cpp" />
     <ClCompile Include="source\Processor.cpp" />
+    <ClCompile Include="source\Filter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\vst3sdk\base\source\classfactoryhelpers.h">
@@ -208,6 +209,7 @@
     <ClInclude Include="source\Editor.h" />
     <ClInclude Include="source\LUFS Meter.h" />
     <ClInclude Include="source\Processor.h" />
+    <ClInclude Include="source\Filter.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="VST Source">
