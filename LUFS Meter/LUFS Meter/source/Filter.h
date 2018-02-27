@@ -21,5 +21,8 @@ public:
 private:
 	double mZ1[2];
 	double mZ2[2];
+	double* z1;
+	double* z2;
 	double b0, b1, b2, a1, a2;
+	int channelCount;
 };

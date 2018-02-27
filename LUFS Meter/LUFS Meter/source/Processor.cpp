@@ -168,7 +168,6 @@ namespace Vst {
 				float* outputChannel = data.outputs[0].channelBuffers32[channel];
 				float* inputChannel = data.inputs[0].channelBuffers32[channel];
 
-				// Something is weird, right channel is distorting
 				highShelfFilter.Process(inputChannel, data.numSamples, (channel == 0) ? FilterChannel::Left : FilterChannel::Right);
 
 				for (int32 sample = 0; sample < data.numSamples; sample++) {

@@ -12,25 +12,29 @@ Filter::Filter()
 
 void Filter::Process(float* data, Steinberg::int32 numOfSamples, FilterChannel channel)
 {
-	double z1, z2;
+	int channelIndex;
 
 	if (channel == FilterChannel::Left) {
-		z1 = mZ1[0];
-		z2 = mZ2[0];
+		channelIndex = 0;
 	}
 	else {
-		z2 = mZ1[1];
-		z2 = mZ2[1];
+		channelIndex = 1;
 	}
 
 	for (int sample = 0; sample < numOfSamples; sample++) {
 		double in = data[sample];
-		double factorForB0 = in - a1 * z1 - a2 * z2;
+		double factorForB0 = in - a1 * mZ1[channelIndex] - a2 * mZ2[channelIndex];
 
-		data[sample] = b0 * factorForB0 + b1 * z1 + b2 * z2;
+		double out = b0 * factorForB0 + b1 * mZ1[channelIndex] + b2 * mZ2[channelIndex];
 		
-		z2 = z1;
-		z1 = factorForB0;
+		mZ2[channelIndex] = mZ1[channelIndex];
+		mZ1[channelIndex] = factorForB0;
+
+		if (!(data[sample] < -1.0e-8 || data[sample] > 1.0e-8)) {
+			data[sample] = 0.0;
+		}
+
+		data[sample] = (float)out;
 	}
 }
 
