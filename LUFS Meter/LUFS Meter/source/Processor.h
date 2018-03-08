@@ -30,6 +30,8 @@ protected:
 
 	float mLUFS;
 
+	unsigned int mSampleBuffersProccessed;
+
 	double b0, b1, b2, a1, a2;
 	double z1[2];
 	double z2[2];

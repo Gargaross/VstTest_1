@@ -50,6 +50,8 @@ namespace Vst {
 			-1.99004745483398,
 			0.99007225036621);
 
+		mSampleBuffersProccessed = 0;
+
 		return result;
 	}
 
@@ -164,18 +166,25 @@ namespace Vst {
 			getBusArrangement(kOutput, 0, arr);
 			int32 numChannels = SpeakerArr::getChannelCount(arr);
 
+			double meanSquare = mLUFS;
+
 			for (int32 channel = 0; channel < numChannels; channel++) {
 				float* outputChannel = data.outputs[0].channelBuffers32[channel];
 				float* inputChannel = data.inputs[0].channelBuffers32[channel];
 
 				highShelfFilter.Process(inputChannel, data.numSamples, (channel == 0) ? FilterChannel::Left : FilterChannel::Right);
 
+				highPassFilter.Process(inputChannel, data.numSamples, (channel == 0) ? FilterChannel::Left : FilterChannel::Right);
+
+				double sampleSum = 0.0;
+
 				for (int32 sample = 0; sample < data.numSamples; sample++) {
-					mLUFS = inputChannel[sample];
+					//mLUFS = inputChannel[sample];
 					
 					// Bypass
 					outputChannel[sample] = inputChannel[sample];
 
+					sampleSum += inputChannel[sample];
 					
 					/*
 					double factorForB0 = inputChannel[sample] - a1 * z1[channel] - a2 * z2[channel];
@@ -200,6 +209,18 @@ namespace Vst {
 					z2[channel] = b2 * in - a2 * outputChannel[sample];
 					*/
 				}
+
+				if (meanSquare > 0.0) {
+					double sampleSumMean = pow(sampleSum, 2) / data.numSamples;
+					meanSquare = (meanSquare + sampleSumMean) / 2; // needs to be divided 
+					// mSampleBuffersProccessed might solve this?
+				}
+				else {
+					meanSquare = pow(sampleSum, 2) / data.numSamples;
+				}
+
+				mLUFS = meanSquare;
+				mSampleBuffersProccessed++;
 			}
 		}
 
