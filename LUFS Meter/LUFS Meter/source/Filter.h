@@ -7,6 +7,8 @@ enum FilterChannel {
 	Right
 };
 
+// Make it possible to use arbitrary amount of channels
+
 class Filter {
 public:
 	Filter();

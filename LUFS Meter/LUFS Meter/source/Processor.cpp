@@ -31,11 +31,6 @@ namespace Vst {
 			addAudioOutput(STR16("AudioOutput"), SpeakerArr::kStereo);
 		}
 
-		for (int i = 0; i < 2; i++) {
-			z1[i] = 0;
-			z2[i] = 0;
-		}
-
 		highShelfFilter.SetConstants(
 			1.53512485958697,
 			-2.69169618940638,
@@ -50,7 +45,8 @@ namespace Vst {
 			-1.99004745483398,
 			0.99007225036621);
 
-		mSampleBuffersProccessed = 0;
+		mRMS = 0.0;
+		mSamplesProcessed = 0;
 
 		return result;
 	}
@@ -166,8 +162,6 @@ namespace Vst {
 			getBusArrangement(kOutput, 0, arr);
 			int32 numChannels = SpeakerArr::getChannelCount(arr);
 
-			double meanSquare = mLUFS;
-
 			for (int32 channel = 0; channel < numChannels; channel++) {
 				float* outputChannel = data.outputs[0].channelBuffers32[channel];
 				float* inputChannel = data.inputs[0].channelBuffers32[channel];
@@ -184,7 +178,7 @@ namespace Vst {
 					// Bypass
 					outputChannel[sample] = inputChannel[sample];
 
-					sampleSum += inputChannel[sample];
+					sampleSum += inputChannel[sample] * inputChannel[sample];
 					
 					/*
 					double factorForB0 = inputChannel[sample] - a1 * z1[channel] - a2 * z2[channel];
@@ -208,19 +202,19 @@ namespace Vst {
 					z1[channel] = b1 * in + z2[channel] - a1 * outputChannel[sample];
 					z2[channel] = b2 * in - a2 * outputChannel[sample];
 					*/
+					mSamplesProcessed++;
 				}
 
-				if (meanSquare > 0.0) {
-					double sampleSumMean = pow(sampleSum, 2) / data.numSamples;
-					meanSquare = (meanSquare + sampleSumMean) / 2; // needs to be divided 
-					// mSampleBuffersProccessed might solve this?
+				//sampleSum = abs(sampleSum);
+
+				if (mRMS > 0.0) {
+					mRMS = ((mSamplesProcessed-data.numSamples)*mRMS + sampleSum) / mSamplesProcessed;
 				}
 				else {
-					meanSquare = pow(sampleSum, 2) / data.numSamples;
+					mRMS = sampleSum / mSamplesProcessed;
 				}
 
-				mLUFS = meanSquare;
-				mSampleBuffersProccessed++;
+				mLUFS = -0.691 + 10. * log10(mRMS);
 			}
 		}
 
@@ -230,7 +224,9 @@ namespace Vst {
 			IParamValueQueue* paramQueue = outParamChanges->addParameterData(kLUFSId, index);
 			if (paramQueue) {
 				int32 index2 = 0;
-				paramQueue->addPoint(0, mLUFS, index2);
+				paramQueue->addPoint(0, pow(mLUFS/10, 10), index2);
+				
+				
 			}
 		}
 

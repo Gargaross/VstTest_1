@@ -16,3 +16,9 @@ double NormalizedQToQ(float qNorm)
 	return 0.1 + 9.9*qNorm;
 }
 */
+
+
+float dBToNormalized(double dB)
+{
+	return 0.0;
+}
