@@ -28,7 +28,7 @@ protected:
 	bool mBypass;
 	float mGain;
 
-	double mRMS;
+	double mMS;
 	float mLUFS;
 
 	unsigned int mSamplesProcessed;

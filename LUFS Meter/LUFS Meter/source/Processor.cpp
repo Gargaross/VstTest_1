@@ -45,7 +45,8 @@ namespace Vst {
 			-1.99004745483398,
 			0.99007225036621);
 
-		mRMS = 0.0;
+		mMS = 0.0;
+		mLUFS = 0.0;
 		mSamplesProcessed = 0;
 
 		return result;
@@ -97,6 +98,20 @@ namespace Vst {
 					int32 numPoints = paramQueue->getPointCount();
 					
 					uint32 id = paramQueue->getParameterId();
+
+					if (id == kResetId) {
+						if (paramQueue->getPoint(numPoints - 1, sampleOffset, value) == kResultTrue) {
+							if (value > 0.5f) {
+								// Reset
+								mMS = 0.0;
+								mLUFS = 0.0;
+								mSamplesProcessed = 0;
+							}
+							else {
+								
+							}
+						}
+					}
 
 					/*
 					if (id == kFilterTypeId) {
@@ -207,14 +222,14 @@ namespace Vst {
 
 				//sampleSum = abs(sampleSum);
 
-				if (mRMS > 0.0) {
-					mRMS = ((mSamplesProcessed-data.numSamples)*mRMS + sampleSum) / mSamplesProcessed;
+				if (mMS > 0.0) {
+					mMS = ((mSamplesProcessed-data.numSamples)*mMS + sampleSum) / mSamplesProcessed;
 				}
 				else {
-					mRMS = sampleSum / mSamplesProcessed;
+					mMS = sampleSum / mSamplesProcessed;
 				}
 
-				mLUFS = -0.691 + 10. * log10(mRMS);
+				mLUFS = -0.691 + 10. * log10(mMS);
 			}
 		}
 
@@ -224,9 +239,7 @@ namespace Vst {
 			IParamValueQueue* paramQueue = outParamChanges->addParameterData(kLUFSId, index);
 			if (paramQueue) {
 				int32 index2 = 0;
-				paramQueue->addPoint(0, pow(mLUFS/10, 10), index2);
-				
-				
+				paramQueue->addPoint(0, pow(10, mLUFS/10), index2);
 			}
 		}
 

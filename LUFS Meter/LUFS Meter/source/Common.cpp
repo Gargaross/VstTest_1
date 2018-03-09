@@ -1,4 +1,5 @@
 #include "Common.h"
+#include <math.h>
 
 /*
 double NormalizedFrequencyToFrequency(float freqNorm)

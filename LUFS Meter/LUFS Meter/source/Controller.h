@@ -14,7 +14,8 @@ namespace Steinberg {
 			kLowPassId,
 			kHighPassId,
 
-			kLUFSId
+			kLUFSId,
+			kResetId
 		};
 
 		class Controller : public EditController

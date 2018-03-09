@@ -2,6 +2,14 @@
 #include "Controller.h"
 #include "Common.h"
 
+bool normalizedToDb(float value, std::string& result, CParamDisplay* display)
+{
+	float dbReduction = 10 * log10(value);
+	result = std::to_string(dbReduction);
+
+	return true;
+}
+
 /*
 bool FilterTypeToString(float value, std::string& result, CParamDisplay* display)
 {
@@ -61,6 +69,7 @@ namespace Steinberg {
 			CRect displayRect(0, 0, 80, 40);
 			displayRect.offset(0, 100);
 			mLUFSDisplay = new CParamDisplay(displayRect);
+			mLUFSDisplay->setValueToStringFunction2(normalizedToDb);
 
 			frame->addView(mLUFSDisplay);
 
@@ -69,6 +78,12 @@ namespace Steinberg {
 				luParam->addRef();
 				luParam->addDependent(this);
 			}
+
+			CRect buttonRect(0, 0, 100, 20);
+			buttonRect.offset(10, 50);
+			CTextButton* resetButton = new CTextButton(buttonRect, this, kResetId, "Reset");
+
+			frame->addView(resetButton);
 
 			/*
 			CRect buttonRect(0, 0, 100, 20);
@@ -228,6 +243,12 @@ namespace Steinberg {
 				controller->performEdit(tag, pControl->getValueNormalized());
 				controller->endEdit(tag);
 			}
+			if (tag == kResetId) {
+				controller->beginEdit(tag);
+				controller->performEdit(tag, 1.0);
+				controller->endEdit(tag);
+			}
+
 			/*
 			if (tag == kLowPassId) {
 				controller->beginEdit(kFilterTypeId);
