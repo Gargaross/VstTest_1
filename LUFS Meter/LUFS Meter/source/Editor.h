@@ -38,6 +38,7 @@ namespace Steinberg {
 			//CParamDisplay* mGainDisplay;
 
 			CParamDisplay* mLUFSDisplay;
+			CParamDisplay* mGatedLUFSDisplay;
 		};
 
 	} // namespace Vst

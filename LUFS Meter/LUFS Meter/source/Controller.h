@@ -15,6 +15,7 @@ namespace Steinberg {
 			kHighPassId,
 
 			kLUFSId,
+			kGatedLUFSId,
 			kResetId
 		};
 

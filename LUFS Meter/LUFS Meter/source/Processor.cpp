@@ -13,6 +13,51 @@
 
 namespace Steinberg {
 namespace Vst {
+
+	GatedBlock::GatedBlock() 
+	{
+		mBlockFull = false;
+		mMaxNumSamples = 0;
+		mSampleSum = 0.0;
+	}
+
+
+	void GatedBlock::SetMaxSamples(int maxNumSamples)
+	{
+		mBlockFull = false;
+		mMaxNumSamples = maxNumSamples;
+		mSampleSum = 0.0;
+	}
+
+
+	void GatedBlock::AddSample(double sample)
+	{
+		if (!mBlockFull) {
+			mSampleSum += sample * sample;
+			mSamplesProcessed++;
+		}
+		
+		if (mSamplesProcessed == mMaxNumSamples) {
+			mBlockFull = true;
+		}
+	}
+
+
+	void GatedBlock::Reset()
+	{
+		mMeanSquare = 0.0;
+		mBlockFull = false;
+		mSampleSum = 0.0;
+		mSamplesProcessed = 0;
+	}
+
+
+	double GatedBlock::GetMeanSquare()
+	{
+		return mSampleSum / mMaxNumSamples;
+	}
+
+
 	Processor::Processor() : 
 		mBypass(false)
 	{
@@ -48,6 +93,16 @@ namespace Vst {
 		mMS = 0.0;
 		mLUFS = 0.0;
 		mSamplesProcessed = 0;
+
+		// Should be set to samplerate * 0.4
+		// Now set for 48kHz
+		mBlock1.SetMaxSamples(19200);
+		mBlock2.SetMaxSamples(19200);
+		mBlock3.SetMaxSamples(19200);
+		mBlock4.SetMaxSamples(19200);
+
+		mBlockTotalMeanSquare = 0.0;
+		mBlocksProcessed = 0;
 
 		return result;
 	}
@@ -106,6 +161,13 @@ namespace Vst {
 								mMS = 0.0;
 								mLUFS = 0.0;
 								mSamplesProcessed = 0;
+								
+								mBlockTotalMeanSquare = 0.0;
+								mBlocksProcessed = 0;
+								mBlock1.Reset();
+								mBlock2.Reset();
+								mBlock3.Reset();
+								mBlock4.Reset();
 							}
 							else {
 								
@@ -177,6 +239,8 @@ namespace Vst {
 			getBusArrangement(kOutput, 0, arr);
 			int32 numChannels = SpeakerArr::getChannelCount(arr);
 
+			double sampleSum = 0.0;
+
 			for (int32 channel = 0; channel < numChannels; channel++) {
 				float* outputChannel = data.outputs[0].channelBuffers32[channel];
 				float* inputChannel = data.inputs[0].channelBuffers32[channel];
@@ -185,52 +249,56 @@ namespace Vst {
 
 				highPassFilter.Process(inputChannel, data.numSamples, (channel == 0) ? FilterChannel::Left : FilterChannel::Right);
 
-				double sampleSum = 0.0;
+				// one channel at 48kHz is the only one working currently
+				// Something wrong with 2 channel calculations
+				if (channel == 1)
+					continue;
 
 				for (int32 sample = 0; sample < data.numSamples; sample++) {
-					//mLUFS = inputChannel[sample];
-					
-					// Bypass
+					// Send filtered signal to output
 					outputChannel[sample] = inputChannel[sample];
 
+					// Old metering
 					sampleSum += inputChannel[sample] * inputChannel[sample];
-					
-					/*
-					double factorForB0 = inputChannel[sample] - a1 * z1[channel] - a2 * z2[channel];
-					outputChannel[sample] = b0 * factorForB0 + b1 * z1[channel] + b2 * z2[channel];
 
-					z2[channel] = z1[channel];
-					z1[channel] = factorForB0;
-					*/
-
-					/*
-					if (mBypass) {
-						outputChannel[sample] = inputChannel[sample];
+					// Only add samples to some blocks after a while
+					if (mSamplesProcessed < 4800) {
+						mBlock1.AddSample(inputChannel[sample]);
+					}
+					else if (mSamplesProcessed < 9600) {
+						mBlock1.AddSample(inputChannel[sample]);
+						mBlock2.AddSample(inputChannel[sample]);
+					}
+					else if (mSamplesProcessed < 14400) {
+						mBlock1.AddSample(inputChannel[sample]);
+						mBlock2.AddSample(inputChannel[sample]);
+						mBlock3.AddSample(inputChannel[sample]);
 					}
 					else {
-					*/
+						mBlock1.AddSample(inputChannel[sample]);
+						mBlock2.AddSample(inputChannel[sample]);
+						mBlock3.AddSample(inputChannel[sample]);
+						mBlock4.AddSample(inputChannel[sample]);
+					}
 
-					/*
-					double in = inputChannel[sample];
-					
-					outputChannel[sample] = b0 * in + z1[channel];
-					z1[channel] = b1 * in + z2[channel] - a1 * outputChannel[sample];
-					z2[channel] = b2 * in - a2 * outputChannel[sample];
-					*/
+					CalculateBlockMeanSquare(mBlock1);
+					CalculateBlockMeanSquare(mBlock2);
+					CalculateBlockMeanSquare(mBlock3);
+					CalculateBlockMeanSquare(mBlock4);
+
 					mSamplesProcessed++;
 				}
-
-				//sampleSum = abs(sampleSum);
-
-				if (mMS > 0.0) {
-					mMS = ((mSamplesProcessed-data.numSamples)*mMS + sampleSum) / mSamplesProcessed;
-				}
-				else {
-					mMS = sampleSum / mSamplesProcessed;
-				}
-
-				mLUFS = -0.691 + 10. * log10(mMS);
 			}
+
+			if (mMS > 0.0) {
+				mMS = ((mSamplesProcessed - data.numSamples)*mMS + sampleSum) / mSamplesProcessed;
+			}
+			else {
+				mMS = sampleSum / mSamplesProcessed;
+			}
+
+			mLUFS = -0.691 + 10. * log10(mMS);
+			mBlockLUFS = -0.691 + 10. * log10(mBlockTotalMeanSquare);
 		}
 
 		IParameterChanges* outParamChanges = data.outputParameterChanges;
@@ -240,6 +308,14 @@ namespace Vst {
 			if (paramQueue) {
 				int32 index2 = 0;
 				paramQueue->addPoint(0, pow(10, mLUFS/10), index2);
+				index++;
+			}
+
+			paramQueue = outParamChanges->addParameterData(kGatedLUFSId, index);
+			if (paramQueue) {
+				int32 index2 = 0;
+				paramQueue->addPoint(0, pow(10, mBlockLUFS / 10), index2);
+				index++;
 			}
 		}
 
@@ -296,6 +372,39 @@ namespace Vst {
 		return kResultOk;
 	}
 	
+
+	void Processor::CalculateBlockMeanSquare(GatedBlock& block)
+	{
+		if (!block.IsFull())
+			return;
+
+		// Absolute threshold, -70 LUFS for the block
+		double blockLoudness = -0.691 + 10. * log10(block.GetMeanSquare());
+		if (blockLoudness <= -70.0) {
+			block.Reset();
+			return;
+		}
+
+		// Relative treshold
+		double currentLoudness = -0.691 + 10. * log10(mBlockTotalMeanSquare);
+		if (blockLoudness <= (currentLoudness - 10.)) {
+			block.Reset();
+			return;
+		}
+
+		// Calculate new total mean square
+		if (mBlockTotalMeanSquare > 0.0) {
+			mBlockTotalMeanSquare = (mBlocksProcessed*mBlockTotalMeanSquare + block.GetMeanSquare()) / (mBlocksProcessed + 1);
+		}
+		else {
+			mBlockTotalMeanSquare = block.GetMeanSquare();
+		}
+
+		// reset gated block
+		block.Reset();
+
+		mBlocksProcessed++;
+	}
 
 } // namespace Vst
 } // nmamespace Steinberg

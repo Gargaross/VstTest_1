@@ -73,10 +73,22 @@ namespace Steinberg {
 
 			frame->addView(mLUFSDisplay);
 
+			displayRect.offset(100, 0);
+			mGatedLUFSDisplay = new CParamDisplay(displayRect);
+			mGatedLUFSDisplay->setValueToStringFunction2(normalizedToDb);
+
+			frame->addView(mGatedLUFSDisplay);
+
 			Parameter* luParam = controller->getParameterObject(kLUFSId);
 			if (luParam) {
 				luParam->addRef();
 				luParam->addDependent(this);
+			}
+
+			Parameter* gatedLuParam = controller->getParameterObject(kGatedLUFSId);
+			if (gatedLuParam) {
+				gatedLuParam->addRef();
+				gatedLuParam->addDependent(this);
 			}
 
 			CRect buttonRect(0, 0, 100, 20);
@@ -237,9 +249,9 @@ namespace Steinberg {
 				controller->performEdit(tag, pControl->getValueNormalized());
 				controller->endEdit(tag);
 			}
-			if (tag == kLUFSId) {
+			if (tag == kLUFSId ||
+				tag == kGatedLUFSId) {
 				controller->beginEdit(tag);
-				float value = pControl->getValueNormalized();
 				controller->performEdit(tag, pControl->getValueNormalized());
 				controller->endEdit(tag);
 			}
@@ -294,6 +306,7 @@ namespace Steinberg {
 			{
 				if (Parameter* p = dynamic_cast<Parameter*>(changedUnknown)) {
 					mLUFSDisplay->setValueNormalized(controller->getParamNormalized(kLUFSId));
+					mGatedLUFSDisplay->setValueNormalized(controller->getParamNormalized(kGatedLUFSId));
 				}
 			}
 		}

@@ -6,6 +6,25 @@
 namespace Steinberg {
 namespace Vst {
 
+	class GatedBlock {
+	public:
+		GatedBlock();
+
+		void SetMaxSamples(int maxSamples);
+		void AddSample(double sample);
+		bool IsFull() { return mBlockFull; }
+		double GetMeanSquare();
+		void Reset();
+
+	private:
+		bool mBlockFull;
+		
+		double mMeanSquare;
+		int mSamplesProcessed;
+		int mMaxNumSamples;
+		double mSampleSum;
+	};
+
 class Processor : public AudioEffect
 {
 public:
@@ -24,14 +43,25 @@ public:
 	static FUnknown* createInstance(void*) { return (IAudioProcessor*)new Processor(); }
 
 protected:
+	void CalculateBlockMeanSquare(GatedBlock& block);
+
 	// Filter constants
 	bool mBypass;
 	float mGain;
 
 	double mMS;
 	float mLUFS;
+	float mBlockLUFS;
 
 	unsigned int mSamplesProcessed;
+
+	unsigned int mBlocksProcessed;
+	double mBlockTotalMeanSquare;
+	GatedBlock mBlock1;
+	GatedBlock mBlock2;
+	GatedBlock mBlock3;
+	GatedBlock mBlock4;
+
 
 	Filter highShelfFilter;
 	Filter highPassFilter;

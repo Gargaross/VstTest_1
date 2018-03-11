@@ -15,6 +15,7 @@ namespace Vst {
 			{
 				parameters.addParameter(STR16("Bypass"), 0, 1, 0, ParameterInfo::kCanAutomate | ParameterInfo::kIsBypass, kBypassId);
 				parameters.addParameter(STR16("LUFS"), 0, 0, 0, ParameterInfo::kCanAutomate, kLUFSId);
+				parameters.addParameter(STR16("Gated LUFS"), 0, 0, 0, ParameterInfo::kCanAutomate, kGatedLUFSId);
 				parameters.addParameter(STR16("Reset"), 0, 1, 0, ParameterInfo::kCanAutomate, kResetId);
 			}
 			return kResultTrue;
