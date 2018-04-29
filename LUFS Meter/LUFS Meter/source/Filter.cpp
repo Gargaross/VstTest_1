@@ -29,7 +29,7 @@ void Filter::Process(float* data, Steinberg::int32 numOfSamples, FilterChannel c
 		
 		mZ2[channelIndex] = mZ1[channelIndex];
 		mZ1[channelIndex] = factorForB0;
-
+		
 		if (!(data[sample] < -1.0e-8 || data[sample] > 1.0e-8)) {
 			data[sample] = 0.0;
 		}
