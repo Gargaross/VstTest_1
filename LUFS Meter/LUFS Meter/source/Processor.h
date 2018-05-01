@@ -34,6 +34,7 @@ public:
 	tresult PLUGIN_API setBusArrangements(SpeakerArrangement* inputs, int32 numIns, SpeakerArrangement* outputs, int32 numOuts) SMTG_OVERRIDE;
 
 	tresult PLUGIN_API setActive(TBool state) SMTG_OVERRIDE;
+	tresult PLUGIN_API setupProcessing(ProcessSetup& newSetup) SMTG_OVERRIDE;
 	tresult PLUGIN_API process(ProcessData& data) SMTG_OVERRIDE;
 
 	//------------------------------------------------------------------------
@@ -44,6 +45,8 @@ public:
 
 protected:
 	void CalculateBlockMeanSquare(GatedBlock& block);
+
+	void SetFilterConstants(SampleRate sampleRate);
 
 	// Filter constants
 	bool mBypass;
@@ -61,7 +64,6 @@ protected:
 	GatedBlock mBlock2;
 	GatedBlock mBlock3;
 	GatedBlock mBlock4;
-
 
 	Filter highShelfFilter;
 	Filter highPassFilter;

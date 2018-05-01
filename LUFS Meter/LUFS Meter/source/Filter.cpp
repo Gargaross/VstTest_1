@@ -40,15 +40,25 @@ void Filter::Process(float* data, Steinberg::int32 numOfSamples, FilterChannel c
 
 
 void Filter::SetConstants(
-	const double& b0_in,
-	const double& b1_in, 
-	const double& b2_in,
 	const double& a1_in,
-	const double& a2_in)
+	const double& a2_in, 
+	const double& b0_in,
+	const double& b1_in,
+	const double& b2_in)
 {
+	a1 = a1_in;
+	a2 = a2_in;
 	b0 = b0_in;
 	b1 = b1_in;
 	b2 = b2_in;
-	a1 = a1_in;
-	a2 = a2_in;
+}
+
+
+void Filter::SetConstants(FilterConstants constants)
+{
+	a1 = constants[0];
+	a2 = constants[1];
+	b0 = constants[2];
+	b1 = constants[3];
+	b2 = constants[4];
 }

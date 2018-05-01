@@ -13,6 +13,23 @@
 
 namespace Steinberg {
 namespace Vst {
+	FilterConstants HSF_22k = { -1.33830533606613, 0.508244558913602, 1.47980599675297, -2.17083127322591, 0.860706349703016 };
+	FilterConstants HPF_22k = { -1.97839760259012, 0.978514419503251, 0.994169099216665, -1.98833819843333, 0.994169099216665 };
+	FilterConstants HSF_24k = { -1.39023460519282, 0.536838481260398, 1.48788595993445, -2.24628965728315, 0.904784871829906 };
+	FilterConstants HPF_24k = { -1.98014412622893, 0.980242817859277, 0.995042168936226, -1.99008433787245, 0.995042168936226 };
+	FilterConstants HSF_44k = { -1.66365511325602, 0.712595428073225, 1.53084110526294, -2.65098583726841, 1.16901070304651 };
+	FilterConstants HPF_44k = { -1.9891696736298, 0.989199035787039, 0.999560064542514, -1.99912012908503, 0.999560064542514 };
+	FilterConstants HSF_48k = { -1.69065929318241, 0.73248077421585, 1.53512485958697, -2.69169618940638, 1.19832928108529 };
+	FilterConstants HPF_48k = { -1.99004745483398, 0.99007225036621, 1, -2, 1 };
+	FilterConstants HSF_88k = { -1.83091998796233, 0.844142261087853, 1.55751180924125, -2.90560302012217, 1.36129339844473 };
+	FilterConstants HPF_88k = { -1.99457751545034, 0.994584875878055, 1.00227196335738, -2.00454392671476, 1.00227196335738 };
+	FilterConstants HSF_96k = { -1.84460946989011, 0.855843322930641, 1.55970991060078, -2.92671577256153, 1.37822264998936 };
+	FilterConstants HPF_96k = { -1.99501754472472, 0.995023759040923, 1.00249278898634, -2.00498557797269, 1.00249278898634 };
+	FilterConstants HSF_176k = { -1.91532931683305, 0.918771744160007, 1.57110586616723, -3.03651153867014, 1.46884287054094 };
+	FilterConstants HPF_176k = { -1.99728692242381, 0.997288765026068, 1.00363204710421, -2.00726409420843, 1.00363204710421 };
+	FilterConstants HSF_192k = { -1.92220223060749, 0.925117735116826, 1.57221714877803, -3.04724956494638, 1.47794349182153 };
+	FilterConstants HPF_192k = { -1.9975072228407, 0.99750877835551, 1.00374267537144, -2.00748535074287, 1.00374267537144 };
+
 
 	GatedBlock::GatedBlock() 
 	{
@@ -61,8 +78,6 @@ namespace Vst {
 	Processor::Processor() : 
 		mBypass(false)
 	{
-		
-
 		setControllerClass(LUFSMeterControllerUID);
 	}
 
@@ -76,30 +91,9 @@ namespace Vst {
 			addAudioOutput(STR16("AudioOutput"), SpeakerArr::kStereo);
 		}
 
-		highShelfFilter.SetConstants(
-			1.53512485958697,
-			-2.69169618940638,
-			1.19839281085285,
-			-1.69065929318241,
-			0.73248077421585);
-
-		highPassFilter.SetConstants(
-			1.0,
-			-2.0,
-			1.0,
-			-1.99004745483398,
-			0.99007225036621);
-
 		mMS = 0.0;
 		mLUFS = 0.0;
 		mSamplesProcessed = 0;
-
-		// Should be set to samplerate * 0.4
-		// Now set for 48kHz
-		mBlock1.SetMaxSamples(19200);
-		mBlock2.SetMaxSamples(19200);
-		mBlock3.SetMaxSamples(19200);
-		mBlock4.SetMaxSamples(19200);
 
 		mBlockTotalMeanSquare = 0.0;
 		mBlocksProcessed = 0;
@@ -135,6 +129,30 @@ namespace Vst {
 			// free memory
 		}
 		return AudioEffect::setActive(state);
+	}
+
+
+	tresult PLUGIN_API Processor::setupProcessing(ProcessSetup& newSetup)
+	{
+		processSetup.maxSamplesPerBlock = newSetup.maxSamplesPerBlock;
+		processSetup.processMode = newSetup.processMode;
+		processSetup.sampleRate = newSetup.sampleRate;
+
+		if (canProcessSampleSize(newSetup.symbolicSampleSize) != kResultTrue)
+			return kResultFalse;
+
+		processSetup.symbolicSampleSize = newSetup.symbolicSampleSize;
+
+		// set filter constants
+		SetFilterConstants(processSetup.sampleRate);
+
+		// set settings for gate blocks
+		mBlock1.SetMaxSamples(processSetup.sampleRate * 0.4);
+		mBlock2.SetMaxSamples(processSetup.sampleRate * 0.4);
+		mBlock3.SetMaxSamples(processSetup.sampleRate * 0.4);
+		mBlock4.SetMaxSamples(processSetup.sampleRate * 0.4);
+
+		return kResultOk;
 	}
 
 
@@ -262,14 +280,16 @@ namespace Vst {
 					sampleSum += inputChannel[sample] * inputChannel[sample];
 
 					// Only add samples to some blocks after a while
-					if (mSamplesProcessed < 4800) {
+					double gateSampleLimit = (processSetup.sampleRate * 0.4) / 4;
+
+					if (mSamplesProcessed < gateSampleLimit) {
 						mBlock1.AddSample(inputChannel[sample]);
 					}
-					else if (mSamplesProcessed < 9600) {
+					else if (mSamplesProcessed < (gateSampleLimit * 2)) {
 						mBlock1.AddSample(inputChannel[sample]);
 						mBlock2.AddSample(inputChannel[sample]);
 					}
-					else if (mSamplesProcessed < 14400) {
+					else if (mSamplesProcessed < (gateSampleLimit * 3)) {
 						mBlock1.AddSample(inputChannel[sample]);
 						mBlock2.AddSample(inputChannel[sample]);
 						mBlock3.AddSample(inputChannel[sample]);
@@ -406,5 +426,47 @@ namespace Vst {
 		mBlocksProcessed++;
 	}
 
+	
+	void Processor::SetFilterConstants(SampleRate sampleRate)
+	{
+		FilterConstants highShelfConstants;
+		FilterConstants highPassConstants;
+
+		if (sampleRate == 22050) {
+			highShelfConstants = HSF_22k;
+			highPassConstants = HPF_22k;
+		}
+		else if (sampleRate == 24000) {
+			highShelfConstants = HSF_24k;
+			highPassConstants = HPF_24k;
+		}
+		else if (sampleRate == 44100) {
+			highShelfConstants = HSF_44k;
+			highPassConstants = HPF_44k;
+		}
+		else if (sampleRate == 48000) {
+			highShelfConstants = HSF_48k;
+			highPassConstants = HPF_48k;
+		}
+		else if (sampleRate == 88200) {
+			highShelfConstants = HSF_88k;
+			highPassConstants = HPF_88k;
+		}
+		else if (sampleRate == 96000) {
+			highShelfConstants = HSF_96k;
+			highPassConstants = HPF_96k;
+		}
+		else if (sampleRate == 176400) {
+			highShelfConstants = HSF_176k;
+			highPassConstants = HPF_176k;
+		}
+		else { // sampleRate == 192000
+			highShelfConstants = HSF_192k;
+			highPassConstants = HPF_192k;
+		}
+
+		highShelfFilter.SetConstants(highShelfConstants);
+		highPassFilter.SetConstants(highPassConstants);
+	}
 } // namespace Vst
 } // nmamespace Steinberg

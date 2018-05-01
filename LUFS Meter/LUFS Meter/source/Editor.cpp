@@ -71,13 +71,21 @@ namespace Steinberg {
 			mLUFSDisplay = new CParamDisplay(displayRect);
 			mLUFSDisplay->setValueToStringFunction2(normalizedToDb);
 
-			frame->addView(mLUFSDisplay);
+			displayRect.offset(0, 50);
+			CTextLabel* lufsLabel = new CTextLabel(displayRect, "LUFS");
 
-			displayRect.offset(100, 0);
+			frame->addView(mLUFSDisplay);
+			frame->addView(lufsLabel);
+
+			displayRect.offset(100, -50);
 			mGatedLUFSDisplay = new CParamDisplay(displayRect);
 			mGatedLUFSDisplay->setValueToStringFunction2(normalizedToDb);
 
+			displayRect.offset(0, 50);
+			CTextLabel* lufsGatedLabel = new CTextLabel(displayRect, "LUFS Gated");
+
 			frame->addView(mGatedLUFSDisplay);
+			frame->addView(lufsGatedLabel);
 
 			Parameter* luParam = controller->getParameterObject(kLUFSId);
 			if (luParam) {
