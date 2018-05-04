@@ -36,6 +36,7 @@ namespace Vst {
 		mBlockFull = false;
 		mMaxNumSamples = 0;
 		mSampleSum = 0.0;
+		mNumChannels = 0;
 	}
 
 
@@ -71,7 +72,7 @@ namespace Vst {
 
 	double GatedBlock::GetMeanSquare()
 	{
-		return mSampleSum / mMaxNumSamples;
+		return (mSampleSum * mNumChannels) / mMaxNumSamples;
 	}
 
 
@@ -147,10 +148,16 @@ namespace Vst {
 		SetFilterConstants(processSetup.sampleRate);
 
 		// set settings for gate blocks
-		mBlock1.SetMaxSamples(processSetup.sampleRate * 0.4);
-		mBlock2.SetMaxSamples(processSetup.sampleRate * 0.4);
-		mBlock3.SetMaxSamples(processSetup.sampleRate * 0.4);
-		mBlock4.SetMaxSamples(processSetup.sampleRate * 0.4);
+		SpeakerArrangement arr;
+		getBusArrangement(kOutput, 0, arr);
+		int32 numChannels = SpeakerArr::getChannelCount(arr);
+
+		mBlock1.SetMaxSamples(numChannels * processSetup.sampleRate * 0.4);
+		mBlock2.SetMaxSamples(numChannels * processSetup.sampleRate * 0.4);
+		mBlock3.SetMaxSamples(numChannels * processSetup.sampleRate * 0.4);
+		mBlock4.SetMaxSamples(numChannels * processSetup.sampleRate * 0.4);
+
+		mBlock1.SetNumberOfChannels(numChannels);
 
 		return kResultOk;
 	}
@@ -267,12 +274,8 @@ namespace Vst {
 
 				highPassFilter.Process(inputChannel, data.numSamples, (channel == 0) ? FilterChannel::Left : FilterChannel::Right);
 
-				// one channel at 48kHz is the only one working currently
-				// Something wrong with 2 channel calculations
-				if (channel == 1)
-					continue;
-
 				for (int32 sample = 0; sample < data.numSamples; sample++) {
+					// TODO unfiltered signal should be sent to output
 					// Send filtered signal to output
 					outputChannel[sample] = inputChannel[sample];
 
@@ -280,7 +283,7 @@ namespace Vst {
 					sampleSum += inputChannel[sample] * inputChannel[sample];
 
 					// Only add samples to some blocks after a while
-					double gateSampleLimit = (processSetup.sampleRate * 0.4) / 4;
+					double gateSampleLimit = (numChannels * processSetup.sampleRate * 0.4) / 4;
 
 					if (mSamplesProcessed < gateSampleLimit) {
 						mBlock1.AddSample(inputChannel[sample]);
@@ -407,7 +410,8 @@ namespace Vst {
 
 		// Relative treshold
 		double currentLoudness = -0.691 + 10. * log10(mBlockTotalMeanSquare);
-		if (blockLoudness <= (currentLoudness - 10.)) {
+		double relativeLoudness = -0.691 + 10. * log10((mBlocksProcessed*mBlockTotalMeanSquare + block.GetMeanSquare()) / (mBlocksProcessed + 1));
+		if (blockLoudness <= (relativeLoudness - 10.)) {
 			block.Reset();
 			return;
 		}

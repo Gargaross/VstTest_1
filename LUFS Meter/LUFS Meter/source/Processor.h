@@ -11,6 +11,7 @@ namespace Vst {
 		GatedBlock();
 
 		void SetMaxSamples(int maxSamples);
+		void SetNumberOfChannels(int channels) { mNumChannels = channels; }
 		void AddSample(double sample);
 		bool IsFull() { return mBlockFull; }
 		double GetMeanSquare();
@@ -22,6 +23,7 @@ namespace Vst {
 		double mMeanSquare;
 		int mSamplesProcessed;
 		int mMaxNumSamples;
+		int mNumChannels;
 		double mSampleSum;
 	};
 
